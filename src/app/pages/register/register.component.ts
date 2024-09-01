@@ -44,10 +44,6 @@ export class RegisterComponent implements OnDestroy {
     this.router.navigate(['login']);
     }
 
-  navigateHome() {
-      this.router.navigate(['home']);
-    }
-
   ngOnDestroy(): void {
     this.userSubscription?.unsubscribe();
   }
