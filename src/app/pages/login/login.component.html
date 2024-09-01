@@ -11,6 +11,9 @@
          <input matInput type="password" formControlName="password">   
       </mat-form-field>
       <button mat-flat-button type="submit" [disabled]="loginFormGroup.invalid">Connect</button>
+      @if(invalidCredentials){
+         <mat-error>Vérifiez l'email ou le mot de passe</mat-error>
+      }
       
    </form>
 </div>

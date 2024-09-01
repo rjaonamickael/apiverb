@@ -14,17 +14,20 @@ import { User } from '../../models/user.model';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent implements OnDestroy {
+export class LoginComponent implements OnInit, OnDestroy {
   
   private formBuilder = inject(FormBuilder);
   private router = inject(Router);
   private usersService = inject(UsersService);
   private userSubscription:Subscription | null = null;
+  
 
   loginFormGroup = this.formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]]
   });
+
+  userLoginView:User = Object.assign(new User(),this.loginFormGroup.value);
 
   invalidCredentials = false;
 
@@ -36,8 +39,13 @@ export class LoginComponent implements OnDestroy {
         this.navigateHome();
       },
       error: error => {
-        console.log(error.message);
-        this.invalidCredentials = true;
+        if(error.error = "Invalid Password."){
+          this.invalidCredentials = true;
+        }
+        else{
+          alert("erreur inconnue");
+        }
+        console.log(error);
       }
     })
   }
@@ -48,6 +56,22 @@ export class LoginComponent implements OnDestroy {
 
   navigateHome() {
       this.router.navigate(['home']);
+    }
+
+  ngOnInit(): void {
+      // S'abonner aux changements de valeur de l'ensemble du formulaire
+      this.userSubscription = this.loginFormGroup.valueChanges.subscribe(data => {
+        this.userLoginView = Object.assign(new User(), this.loginFormGroup.value);
+      });
+    
+      // S'abonner aux changements de valeur de chaque champ pour réinitialiser invalidCredentials
+      this.loginFormGroup.get('email')?.valueChanges.subscribe(() => {
+        this.invalidCredentials = false;
+      });
+    
+      this.loginFormGroup.get('password')?.valueChanges.subscribe(() => {
+        this.invalidCredentials = false;
+      });
     }
 
   ngOnDestroy(): void {
