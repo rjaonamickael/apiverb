@@ -1,6 +1,5 @@
-import { Component, inject, OnDestroy } from '@angular/core';
-import { VerbsService } from '../../services/verb/verbs.service';
-import { Verbe } from '../../models/verbe.model';
+import { Component } from '@angular/core';
+
 
 @Component({
   selector: 'app-home',
@@ -8,21 +7,9 @@ import { Verbe } from '../../models/verbe.model';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnDestroy {
+export class HomeComponent {
 
-  private verbService = inject(VerbsService);
-  private verbe: Verbe = new Verbe();
 
-  constructor() { }
+  constructor() {}
 
-  getVerb() {
-    this.verbService.getVerb('tester').subscribe(rep => {
-      this.verbe.nom = rep.verb;
-      console.log('Verbe:', this.verbe.nom);  // Check result in component
-    }, error => {
-      console.error('Error:', error);  // Handle and log any errors
-    });
-  }
-
-  ngOnDestroy(): void { }
 }
