@@ -1,4 +1,4 @@
-import { Credentials, UsersService } from './../../services/users/users.service';
+import { Credentials, UsersService } from '../../services/user/users.service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
