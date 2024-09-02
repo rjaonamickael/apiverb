@@ -1,3 +1,34 @@
 <p>home works!</p>
 
-<button mat-flat-button color="primary" (click)="getVerb()">Get Verb</button>
+<!-- <button mat-flat-button color="primary" (click)="getVerb()">Get Verb</button> -->
+
+
+<div>
+   <h2>Conjugaison pour le verbe: {{ verb }}</h2>
+   <button (click)="getConjugation()">Recharger</button>
+   
+   @if(verbData){
+      <div>
+         <h3>Description complète</h3>
+         <p>{{ verbData.fullDescription }}</p>
+     
+         <h3>Conjugaisons au Présent de l'indicatif</h3>
+         <ul>
+           <li>Je: {{ verbData.indicatif.present.indicatifPresentI }}</li>
+           <li>Tu: {{ verbData.indicatif.present.indicatifPresentYou }}</li>
+           <li>Il/Elle/On: {{ verbData.indicatif.present.indicatifPresentHeSheIt }}</li>
+           <li>Nous: {{ verbData.indicatif.present.indicatifPresentWe }}</li>
+           <li>Vous: {{ verbData.indicatif.present.indicatifPresentYouAll }}</li>
+           <li>Ils/Elles: {{ verbData.indicatif.present.indicatifPresentThey }}</li>
+         </ul>
+       </div>
+       @if(errorMessage){
+          <div  class="error-message">
+             {{ errorMessage }}
+           </div>
+       }
+
+   }
+
+   
+ </div>

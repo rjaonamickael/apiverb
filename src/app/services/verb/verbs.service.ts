@@ -7,39 +7,22 @@ import { catchError, map, Observable, tap, throwError } from 'rxjs';
 })
 
 export class VerbsService {
-  private http = inject(HttpClient);
+  //private http = inject(HttpClient);
   private BASE_URL = 'https://french-verbs-fall-2023-app-ramym.ondigitalocean.app/v0/verbs/';
   private token: string | null = null;
 
-  constructor( http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
 
   //A modifier // pas encore terminé
-  getVerb(verb: string): Observable<any> {
-    this.token = localStorage.getItem('x-access-token') ?? '';
-    const headers = new HttpHeaders({ 'x-access-token': this.token });
-    const body = { verb };
+  getVerbService(verb: string): Observable<any> {
+    this.token =  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pY2thZWwxMkBnbWFpbC5jb20iLCJ1aWQiOiI2NmQzZTc0YjI2ZmM2ZGYyYjExNmNmNjIiLCJleHAiOjE3Mjc3OTI3MDl9.HccLevRNPWuHpQ0tBWBXVVrPPRkABwXQw0_zrzkZj9s';
+    //this.token = localStorage.getItem('x-access-token') ?? '';
+    const headers = new HttpHeaders().set('x-access-token', this.token);
+    //const assignedToUid = '66d3e74b26fc6df2b116cf62';
+    const body = { verb};
 
-    console.log('Request intercepted:', body);
-    console.log('header intercepted:', headers);
-
-    return this.http.post(this.BASE_URL, body, { headers })
-      .pipe(
-        tap((result) => {
-          console.log('Response intercepted:', result);
-          // Vous pouvez effectuer des opérations supplémentaires avec la réponse ici
-        }),
-        catchError((error: HttpErrorResponse) => {
-          if (error.error instanceof ErrorEvent) {
-            // Erreur spécelle du client
-            console.log('An error occurred:', error.error.message);
-          } else {
-            // Erreur spécelle du serveur
-            console.log(`Backend returned code ${error.status}, body was:`, error.error);
-          }
-          return throwError(() => new Error('Something bad happened; please try again later.'));
-        })
-      );
+    return this.http.post<any>(this.BASE_URL, body, { headers });
   }
 }
 
