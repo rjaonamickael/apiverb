@@ -14,7 +14,7 @@ import { User } from '../../models/user.model';
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
-export class RegisterComponent implements OnDestroy {
+export class RegisterComponent implements OnInit, OnDestroy {
   
   private formBuilder = inject(FormBuilder);
   private router = inject(Router);
@@ -27,6 +27,10 @@ export class RegisterComponent implements OnDestroy {
     password: ['', [Validators.required]]
   });
 
+  userRegisterView:User = Object.assign(new User(),this.registerFormGroup.value);
+
+  invalidCredentials = false;
+
 
   register(): void {
     const credentials: Credentials = this.registerFormGroup.value as Credentials;
@@ -35,18 +39,31 @@ export class RegisterComponent implements OnDestroy {
         this.navigateLogin();
       },
       error: (error) => {
-        console.log(error);
+        if(error.error = "There is already an user with this email."){
+          this.invalidCredentials = true;
+        }
+        else{
+          console.log(error);
+        }
       }
     });
   }
 
   navigateLogin() {
     this.router.navigate(['login']);
-    }
+  }
 
-  navigateHome() {
-      this.router.navigate(['home']);
-    }
+  ngOnInit(): void {
+    // S'abonner aux changements de valeur de l'ensemble du formulaire
+    this.userSubscription = this.registerFormGroup.valueChanges.subscribe(data => {
+      this.userRegisterView = Object.assign(new User(), this.registerFormGroup.value);
+    });
+  
+    // S'abonner aux changements de valeur du champs email pour réinitialiser invalidCredentials
+    this.registerFormGroup.get('email')?.valueChanges.subscribe(() => {
+      this.invalidCredentials = false;
+    });
+  }
 
   ngOnDestroy(): void {
     this.userSubscription?.unsubscribe();

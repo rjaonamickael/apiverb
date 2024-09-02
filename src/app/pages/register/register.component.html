@@ -7,7 +7,7 @@
          <input matInput  formControlName="email">
       </mat-form-field>
       <mat-form-field>
-         <mat-label > Username </mat-label>
+         <mat-label > Name </mat-label>
          <input matInput  formControlName="name">
       </mat-form-field>
       <mat-form-field>
@@ -15,6 +15,9 @@
          <input matInput type="password" formControlName="password">   
       </mat-form-field>
       <button mat-flat-button type="submit" [disabled]="registerFormGroup.invalid">Register</button>
+      @if(invalidCredentials){
+         <mat-error>Email déja utilisé</mat-error>
+      }
       
    </form>
 </div>

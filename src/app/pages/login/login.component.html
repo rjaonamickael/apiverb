@@ -1,1 +1,19 @@
-<p>login works!</p>
+<div id="container">
+   <form action="" (submit)="login()" [formGroup]="loginFormGroup">
+      <h3>Sign In</h3>
+
+      <mat-form-field>
+         <mat-label > Email Adresse </mat-label>
+         <input matInput  formControlName="email">
+      </mat-form-field>
+      <mat-form-field>
+         <mat-label > Password </mat-label>
+         <input matInput type="password" formControlName="password">   
+      </mat-form-field>
+      <button mat-flat-button type="submit" [disabled]="loginFormGroup.invalid">Connect</button>
+      @if(invalidCredentials){
+         <mat-error>Vérifiez l'email ou le mot de passe</mat-error>
+      }
+      
+   </form>
+</div>
