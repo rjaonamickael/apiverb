@@ -62,6 +62,20 @@ export class ConjugationComponent {
     });
   }
 
+  addFavorite(verbData: any): void {
+    console.log(verbData.nom);
+    
+    this.verbService.addFavoriteVerbService(verbData.nom).subscribe({
+      
+      next: (data) => {
+        console.log("ajouter aux favoris OK");
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
+  }
+
   isFavorite(verbData: any): boolean {
     return this.favorites.has(verbData.nom);
   }
