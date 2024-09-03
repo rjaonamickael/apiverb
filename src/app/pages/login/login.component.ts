@@ -1,10 +1,8 @@
 import { Credentials, UsersService } from '../../services/user/users.service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { UsersService, Credentials } from './../../services/users/users.service';
 import { User } from '../../models/user.model';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -19,12 +17,13 @@ import { CommonModule } from '@angular/common';
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
-    CommonModule,  
+    CommonModule,
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, OnDestroy {
+
 
   private formBuilder = inject(FormBuilder);
   private router = inject(Router);
@@ -50,7 +49,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.invalidCredentials = true;
         } else {
           alert("Erreur inconnue");
-        }
+        } 
         console.log(error);
       }
     });
@@ -60,10 +59,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.router.navigate(['home']);
   }
 
-
-  navigateRegister() {
-    this.router.navigate(['register']);
-  }
 
   ngOnInit(): void {
     this.userSubscription = this.loginFormGroup.valueChanges.subscribe(() => {

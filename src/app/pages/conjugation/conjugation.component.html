@@ -1,0 +1,69 @@
+
+<div id="search-bar">
+  <input 
+    type="text" 
+    id="search-bar-input" 
+    placeholder="Tapez ici le verbe à conjuguer" 
+    [(ngModel)]="verbToConjugate" 
+  /> 
+ 
+  <button mat-fab color="primary" (click)="getConjugation(verbToConjugate)"> 
+    Conjuger
+  </button>
+</div>
+
+  <div >
+    @if(verbData){
+      <mat-accordion  >
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Verbe : {{ verbData.nom }}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <p><strong>Groupe:</strong> {{ verbData.groupe }}</p>
+          <p><strong>Auxiliaire:</strong> {{ verbData.auxiliaire }}</p>
+          <p><strong>Type:</strong> {{ verbData.type }}</p>
+          <p><strong>Règle:</strong> {{ verbData.regle }}</p>
+        </mat-expansion-panel>
+      
+        <ng-container *ngFor="let mode of modes">
+          <mat-expansion-panel *ngIf="mode.data && mode.data.length">
+            
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{ mode.name }}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div *ngFor="let tense of mode.data">
+              <p><strong>{{ tense.titre }}:</strong></p>
+
+              <mat-list>
+                <mat-list-item *ngIf="tense.je" > {{ tense.je }}</mat-list-item>
+                <mat-list-item *ngIf="tense.tu"> {{ tense.tu }}</mat-list-item>
+                <mat-list-item *ngIf="tense.il"> {{ tense.il }}</mat-list-item>
+                <mat-list-item *ngIf="tense.nous"> {{ tense.nous }}</mat-list-item>
+                <mat-list-item *ngIf="tense.vous"> {{ tense.vous }}</mat-list-item>
+                <mat-list-item *ngIf="tense.ils"> {{ tense.ils }}</mat-list-item>
+              </mat-list>
+            </div>
+          </mat-expansion-panel>
+        </ng-container>
+      
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Infinitif et Participe
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <p><strong>Infinitif Présent:</strong> {{ verbData.nominale.infinitif.present }}</p>
+          <p><strong>Infinitif Passé:</strong> {{ verbData.nominale.infinitif.passe }}</p>
+          <p><strong>Participe Présent:</strong> {{ verbData.nominale.participe.present }}</p>
+          <p><strong>Participe Passé:</strong> {{ verbData.nominale.participe.passe }}</p>
+        </mat-expansion-panel>
+      </mat-accordion>
+  }
+
+  </div>
+
+
