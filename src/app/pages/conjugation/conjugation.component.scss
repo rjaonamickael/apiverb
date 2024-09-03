@@ -1,29 +1,267 @@
-#search-bar{
- display: flex;
- background-color: rgb(193, 249, 242);
- border-radius: 40px;
- margin: 50px auto;
- width: 400px;
- box-shadow: 3px 3px 10px -10px rgb(224, 162, 255);
+/* General Body Style */
+body {
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ background-color: #f4f6f8;
+ margin: 0;
+ padding: 0;
+ color: #333;
 }
 
-button{
- border: none;
- margin: 5px;
+/* Style for the Search Bar */
+#search-bar {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ background-color: #c1f9f2;
  border-radius: 40px;
- background-color: rgb(198, 179, 241);
- width: 70px;
+ margin: 20px auto;
+ padding: 10px;
+ width: 90%;
+ max-width: 500px;
+ box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+ transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+#search-bar:hover {
+ box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+ transform: translateY(-2px);
+}
+
+#search-bar-input {
+ flex: 1;
+ border: none;
+ padding: 15px;
+ border-radius: 30px;
+ outline: none;
+ font-size: 1rem;
+ margin-right: 10px;
+ background-color: #fff;
+ box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+ transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+#search-bar-input:focus {
+ box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.2);
+ transform: scale(1.02);
+}
+
+/* Style for the Conjuger Button */
+button {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ padding: 18px 35px; /* Increased padding for a larger button */
+ border-radius: 30px;
+ background: linear-gradient(135deg, #6c63ff, #4caf50);
+ color: white;
+ font-size: 1.2rem; /* Slightly larger font size */
+ cursor: pointer;
+ border: none;
+ box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+ transition: background 0.3s, box-shadow 0.3s, transform 0.1s; /* Shorter transform transition */
+ width: 180px; /* Fixed width */
+ height: 60px; /* Fixed height */
+}
+
+button:hover {
+ background: linear-gradient(135deg, #4caf50, #6c63ff);
+ box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+ transform: translateY(-3px);
+}
+
+button:active {
+ transform: scale(1); /* Prevent shrinking on click */
+ box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Accordion and Panels */
+mat-accordion {
+ margin: 20px auto;
+ max-width: 800px;
+ background-color: #f7f9fa;
+ border-radius: 15px;
+ box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+ padding: 20px;
+ transition: box-shadow 0.3s ease;
+}
+
+mat-accordion:hover {
+ box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+mat-expansion-panel {
+ border: 1px solid rgba(0, 0, 0, 0.1);
+ border-radius: 10px;
+ margin-bottom: 10px;
+ overflow: hidden;
+ transition: transform 0.3s ease;
+}
+
+mat-expansion-panel:hover {
+ transform: translateY(-2px);
+}
+
+mat-expansion-panel-header {
+ background-color: rgba(108, 99, 255, 0.1);
+ color: rgb(108, 99, 255);
+ padding: 15px;
+ transition: background-color 0.3s;
  cursor: pointer;
 }
 
-button:hover{
- background-color: rgb(138, 251, 248);
+mat-expansion-panel-header:hover {
+ background-color: rgba(108, 99, 255, 0.2);
 }
 
-input{
- border: rgb(138, 251, 248);
- width: 100%;
+mat-panel-title {
+ display: flex;
+ align-items: center;
+ gap: 15px; /* Adjust gap size as needed */
+}
+
+/* List Items */
+mat-list-item {
  padding: 10px;
- outline: invert;
- border-radius: 40px;
+ margin: 5px 0;
+ border-radius: 5px;
+ background-color: #e0f7fa;
+ color: #333;
+ transition: background-color 0.3s;
+}
+
+mat-list-item:hover {
+ background-color: #b2ebf2;
+}
+
+/* Infinitif and Participle Section */
+mat-expansion-panel:last-child p {
+ margin: 10px 0;
+ padding: 10px;
+ background-color: #e3f2fd;
+ border-radius: 8px;
+ box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+ transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+mat-expansion-panel:last-child p:hover {
+ transform: scale(1.02);
+ box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Verb Cards */
+.verb-container {
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+ gap: 20px;
+ padding: 30px;
+ background-color: #f0f4f8;
+}
+
+.verb-card {
+ background: white;
+ border-radius: 15px;
+ width: 250px;
+ box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+ overflow: hidden;
+ transition: transform 0.3s ease, box-shadow 0.3s ease;
+ cursor: pointer;
+ position: relative;
+}
+
+.verb-card:hover {
+ transform: translateY(-10px);
+ box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.verb-card-header {
+ background: linear-gradient(135deg, #6c63ff, #4caf50);
+ color: white;
+ padding: 20px;
+ font-size: 1.2rem;
+ font-weight: bold;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+}
+
+.verb-card-header i {
+ font-size: 1.5rem;
+}
+
+.verb-card-body {
+ padding: 20px;
+ color: #555;
+}
+
+.verb-card-body p {
+ margin: 10px 0;
+}
+
+.verb-card-footer {
+ padding: 10px;
+ text-align: center;
+ border-top: 1px solid #eee;
+}
+
+.verb-card-footer button {
+ padding: 10px 20px;
+ background-color: #6c63ff;
+ color: white;
+ border: none;
+ border-radius: 20px;
+ cursor: pointer;
+ transition: background-color 0.3s, transform 0.3s;
+}
+
+.verb-card-footer button:hover {
+ background-color: #4caf50;
+ transform: translateY(-2px);
+}
+
+
+.verb-icon {
+ font-size: 1.2rem;
+ color: rgba(255, 255, 255, 0.8);
+ margin-right: 10px;
+}
+
+/* Style for Favorite Button */
+button[mat-icon-button] {
+ background-color: transparent;
+ color: #6c63ff;
+ border: none;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ transition: color 0.3s, transform 0.3s;
+ padding: 4px; 
+ border-radius: 50%;
+ width: 36px;
+ height: 36px;
+}
+
+button[mat-icon-button].warn {
+ color: #ff4081; /* Favorite color */
+}
+
+button[mat-icon-button]:hover {
+ color: #4caf50; /* Change color on hover */
+ transform: scale(1.1); /* Slightly increase size */
+ background-color: rgba(76, 175, 80, 0.1); /* Subtle background change */
+}
+
+button[mat-icon-button]:active {
+ transform: scale(1); /* Return to normal size on click */
+}
+
+/* Favorite Star Icon */
+.mat-icon {
+ font-size: 20px; /* Reduced icon size */
+ transition: transform 0.3s, color 0.3s;
+}
+
+button[mat-icon-button]:hover .mat-icon {
+ transform: scale(1.1); /* Less scaling effect */
+ color: #ffeb3b; /* Highlight star on hover */
 }

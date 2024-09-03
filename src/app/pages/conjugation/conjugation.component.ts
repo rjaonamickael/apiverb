@@ -9,11 +9,12 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {MatListModule} from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-conjugation',
   standalone: true,
-  imports: [CommonModule,MatExpansionModule,FormsModule,MatListModule],
+  imports: [CommonModule,MatExpansionModule,FormsModule,MatListModule,MatIconModule],
   templateUrl: './conjugation.component.html',
   styleUrl: './conjugation.component.scss'
 }) 
@@ -38,6 +39,7 @@ export class ConjugationComponent {
   verbData: any ;
 
   
+  favorites: Set<string> = new Set(); // Store favorite verbs
 
   constructor() {}
 
@@ -58,6 +60,18 @@ export class ConjugationComponent {
         console.log(error);
       } 
     });
+  }
+
+  isFavorite(verbData: any): boolean {
+    return this.favorites.has(verbData.nom);
+  }
+
+  toggleFavorite(verbData: any): void {
+    if (this.isFavorite(verbData)) {
+      this.favorites.delete(verbData.nom);
+    } else {
+      this.favorites.add(verbData.nom);
+    }
   }
 
 
