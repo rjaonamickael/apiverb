@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { User } from '../../models/user.model';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { CommonModule } from '@angular/common';  
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-register',

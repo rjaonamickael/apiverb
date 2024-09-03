@@ -17,7 +17,7 @@ import { CommonModule } from '@angular/common';
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
-    CommonModule,  
+    CommonModule,
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']

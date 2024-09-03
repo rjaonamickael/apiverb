@@ -1,0 +1,21 @@
+.logout-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #6C63FF;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #4CAF50;
+  transform: scale(1.05);
+}
