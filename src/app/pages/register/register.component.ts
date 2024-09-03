@@ -1,13 +1,11 @@
 import { Credentials, UsersService } from '../../services/user/users.service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
-
-import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-
-import { User } from '../../models/user.model';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { User } from '../../models/user.model';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
 
