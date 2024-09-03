@@ -1,15 +1,15 @@
 import { Credentials, UsersService } from '../../services/user/users.service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { UsersService, Credentials } from './../../services/users/users.service';
+
 import { User } from '../../models/user.model';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { CommonModule } from '@angular/common';  
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-register',

@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnDestroy } from '@angular/core';
+import { VerbsService } from '../../services/verb/verbs.service';
+import { Verbe } from '../../models/verbe.model';
+import { UsersService } from '../../services/user/users.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -7,9 +11,36 @@ import { Component } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+
+export class HomeComponent implements OnDestroy {
+
+  private verbService = inject(VerbsService);
+  private usersService = inject(UsersService);
+  private router = inject(Router);
+  private verbe: Verbe = new Verbe();
+ 
+  getVerb() {
+    this.verbService.getVerb('tester').subscribe(rep => {
+      this.verbe.nom = rep.verb;
+      console.log('Verbe:', this.verbe.nom);
+    }, error => {
+      console.error('Error:', error);
+    });
+  }
 
 
-  constructor() {}
+  logout(): void {
+
+    localStorage.removeItem('x-access-token');
+    localStorage.removeItem('user_name');
+
+
+    this.usersService.user.set(null);
+
+
+    this.router.navigate(['/login']);
+  }
+
+  ngOnDestroy(): void { }
 
 }
