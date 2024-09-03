@@ -12,13 +12,17 @@
 </div>
 
 <div *ngIf="verbData">
+  
   <mat-accordion>
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
           Verbe : {{ verbData.nom }}
           <button mat-icon-button (click)="toggleFavorite(verbData)">
-            <mat-icon>{{ isFavorite(verbData) ? 'star' : 'star_border' }}</mat-icon>
+            <button (click)="addFavorite(verbData)" type="button"> 
+              <mat-icon onclick="">{{ isFavorite(verbData) ? 'star' : 'star_border' }}</mat-icon>
+            </button>
+
           </button>
         </mat-panel-title>
       </mat-expansion-panel-header>
