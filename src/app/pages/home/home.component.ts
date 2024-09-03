@@ -4,21 +4,20 @@ import { Verbe } from '../../models/verbe.model';
 import { UsersService } from '../../services/user/users.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-home',
   standalone: true,
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
+
 export class HomeComponent implements OnDestroy {
 
   private verbService = inject(VerbsService);
   private usersService = inject(UsersService);
   private router = inject(Router);
   private verbe: Verbe = new Verbe();
-
-  constructor() { }
-
  
   getVerb() {
     this.verbService.getVerb('tester').subscribe(rep => {
@@ -43,4 +42,5 @@ export class HomeComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void { }
+
 }
