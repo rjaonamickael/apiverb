@@ -59,6 +59,12 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.router.navigate(['home']);
   }
 
+  navigateRegister() {
+    this.router.navigate(['register']);
+  }
+
+
+
 
   ngOnInit(): void {
     this.userSubscription = this.loginFormGroup.valueChanges.subscribe(() => {

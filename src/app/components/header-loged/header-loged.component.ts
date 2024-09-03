@@ -1,26 +1,19 @@
-import { Component, inject, OnDestroy } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { UsersService } from '../../services/user/users.service';
-import { Router } from '@angular/router';
-
+import { Router } from 'express';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-header-loged',
   standalone: true,
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  imports: [],
+  templateUrl: './header-loged.component.html',
+  styleUrl: './header-loged.component.scss'
 })
-
-export class HomeComponent implements OnDestroy {
-
+export class HeaderLogedComponent {
   private usersService = inject(UsersService);
   private router = inject(Router);
- 
 
-
-  navigateConjugation() {
-    this.router.navigate(['conjugation']);
-  }
-
+  constructor(){}
 
   logout(): void {
 
@@ -34,6 +27,5 @@ export class HomeComponent implements OnDestroy {
     this.router.navigate(['/login']);
   }
 
-  ngOnDestroy(): void { }
 
 }

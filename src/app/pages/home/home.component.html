@@ -13,14 +13,13 @@
       </ul>
     </nav>
   </div>
-</header>
-
+ </header>
 
 <section class="hero">
   <div class="hero-content">
     <h2>Explorez et maîtrisez les verbes français</h2>
     <p>Notre application vous permet de découvrir, conjuguer et interagir avec des verbes français d'une manière facile et intuitive. Commencez dès maintenant et améliorez vos compétences linguistiques !</p>
-    <a href="#" class="btn">Commencez Maintenant</a>
+    <a href="#" class="btn" (click)="navigateConjugation()" >Commencez Maintenant</a>
   </div>
 </section>
 
@@ -36,7 +35,7 @@
     <i class="fas fa-book fa-3x" style="color: #6C63FF; margin-top: 20px;"></i>
     <h3>Consultation de Conjugaison</h3>
     <p>Consultez facilement la conjugaison complète de n'importe quel verbe français à tous les temps verbaux.</p>
-    <button class="btn">Consulter Maintenant</button>
+    <button class="btn" (click)="navigateConjugation()">Consulter Maintenant</button>
   </div>
 
   <div id="quiz" class="feature-card">
