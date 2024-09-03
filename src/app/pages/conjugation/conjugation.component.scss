@@ -1,0 +1,29 @@
+#search-bar{
+ display: flex;
+ background-color: rgb(193, 249, 242);
+ border-radius: 40px;
+ margin: 50px auto;
+ width: 400px;
+ box-shadow: 3px 3px 10px -10px rgb(224, 162, 255);
+}
+
+button{
+ border: none;
+ margin: 5px;
+ border-radius: 40px;
+ background-color: rgb(198, 179, 241);
+ width: 70px;
+ cursor: pointer;
+}
+
+button:hover{
+ background-color: rgb(138, 251, 248);
+}
+
+input{
+ border: rgb(138, 251, 248);
+ width: 100%;
+ padding: 10px;
+ outline: invert;
+ border-radius: 40px;
+}

@@ -1,7 +1,8 @@
 export enum VerbeType{
    TRANSITIF ="Transitif",
    INTRANSITIF ="Intransitif",
-   AMBITRANSITIF ="Ambitransitif"
+   AMBITRANSITIF ="Ambitransitif",
+   INCONNUE = "Inconnue par l'application"
 }
 
 export interface IVerbeType{
