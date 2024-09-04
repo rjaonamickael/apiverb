@@ -17,8 +17,12 @@ export class HomeComponent implements OnDestroy {
  
 
 
-  navigateConjugation() {
+  navigateToConjugation() {
     this.router.navigate(['conjugation']);
+  }
+
+  navigateToAllFavorites() {
+    this.router.navigate(['favorites']);
   }
 
 
