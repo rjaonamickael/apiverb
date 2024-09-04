@@ -17,7 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [CommonModule,MatExpansionModule,FormsModule,MatListModule,MatIconModule],
   templateUrl: './conjugation.component.html',
   styleUrl: './conjugation.component.scss'
-}) 
+})
 export class ConjugationComponent {
   private verbService = inject(VerbsService);
   //private verbe: Verbe = new Verbe();
@@ -38,7 +38,7 @@ export class ConjugationComponent {
 
   verbData: any ;
 
-  
+
   favorites: Set<string> = new Set(); // Store favorite verbs
 
   constructor() {}
@@ -54,19 +54,19 @@ export class ConjugationComponent {
           { name: 'Subjonctif', data: this.verbData?.mode.subjonctif },
           { name: 'Impératif', data: this.verbData?.mode.imperatif }
         ];
-        
+
       },
       error: (error) => {
         console.log(error);
-      } 
+      }
     });
   }
 
   addFavorite(verbData: any): void {
     console.log(verbData.nom);
-    
+
     this.verbService.addFavoriteVerbService(verbData.nom).subscribe({
-      
+
       next: (data) => {
         console.log("ajouter aux favoris OK");
       },
@@ -100,7 +100,7 @@ function mapJSONToVerbe(data: any): Verbe {
   verbe.auxiliaire  = auxiliaire(data.verb.wordConjugateWithWhichVerb);   // Auxiliaire avoir ou être
   verbe.type        = Type(data.verb.wordVerbType);                       // Transitif ou instransitif ou ambi
   verbe.regle       = majusc(data.verb.wordConjugateRule);                // Règle spécifique au verbe
-  
+
 
   // Mapping des modes verbaux
   verbe.mode.indicatif    = mapMode(data.verb.indicatif);
@@ -108,7 +108,7 @@ function mapJSONToVerbe(data: any): Verbe {
   verbe.mode.subjonctif   = mapMode(data.verb.subjonctif);
   verbe.mode.imperatif    = mapMode(data.verb.imperatif);
 
-  
+
   console.log(verbe.mode.indicatif)
   console.log(verbe.mode.conditionnel)
   console.log(verbe.mode.subjonctif)
@@ -136,11 +136,11 @@ function mapMode(modeData: any): TempsVerbe[] {
     let tense = new TempsVerbe();
     tense.titre = tenseKey; // Titre basé sur le key, ajuster si nécessaire
 
-    tense.je = modeData[tenseKey]['indicatifPresentI'] 
-               || modeData[tenseKey]['conditionnelPasse1reFormeI'] 
+    tense.je = modeData[tenseKey]['indicatifPresentI']
+               || modeData[tenseKey]['conditionnelPasse1reFormeI']
                || modeData[tenseKey]['conditionnelPasse2eFormeI']
-               || modeData[tenseKey]['conditionnelPresentI'] 
-               || modeData[tenseKey]['subjonctifPresentI'] 
+               || modeData[tenseKey]['conditionnelPresentI']
+               || modeData[tenseKey]['subjonctifPresentI']
                || modeData[tenseKey]['indicatifFuturAnterieurI']
                || modeData[tenseKey]['indicatifFuturSimpleI']
                || modeData[tenseKey]['indicatifImparfaitI']
@@ -152,11 +152,11 @@ function mapMode(modeData: any): TempsVerbe[] {
                || modeData[tenseKey]['subjonctifPasseI']
                || modeData[tenseKey]['subjonctifPlusQueParfaitI'];
 
-    tense.tu = modeData[tenseKey]['indicatifPresentYou'] 
-                || modeData[tenseKey]['conditionnelPasse1reFormeYou'] 
+    tense.tu = modeData[tenseKey]['indicatifPresentYou']
+                || modeData[tenseKey]['conditionnelPasse1reFormeYou']
                 || modeData[tenseKey]['conditionnelPasse2eFormeYou']
-                || modeData[tenseKey]['conditionnelPresentYou']  
-               || modeData[tenseKey]['subjonctifPresentYou'] 
+                || modeData[tenseKey]['conditionnelPresentYou']
+               || modeData[tenseKey]['subjonctifPresentYou']
                 || modeData[tenseKey]['imperatifPresentFirst']
                 || modeData[tenseKey]['imperatifPasseFirst']
                || modeData[tenseKey]['indicatifFuturAnterieurYou']
@@ -170,10 +170,10 @@ function mapMode(modeData: any): TempsVerbe[] {
                || modeData[tenseKey]['subjonctifPasseYou']
                || modeData[tenseKey]['subjonctifPlusQueParfaitYou'];
 
-    tense.il = modeData[tenseKey]['indicatifPresentHeSheIt'] 
-                || modeData[tenseKey]['conditionnelPasse1reFormeHeSheIt'] 
+    tense.il = modeData[tenseKey]['indicatifPresentHeSheIt']
+                || modeData[tenseKey]['conditionnelPasse1reFormeHeSheIt']
                 || modeData[tenseKey]['conditionnelPasse2eFormeHeSheIt']
-                || modeData[tenseKey]['conditionnelPresentHeSheIt']  
+                || modeData[tenseKey]['conditionnelPresentHeSheIt']
                || modeData[tenseKey]['subjonctifPresentHeSheIt']
                || modeData[tenseKey]['indicatifFuturAnterieurHeSheIt']
                || modeData[tenseKey]['indicatifFuturSimpleHeSheIt']
@@ -186,12 +186,12 @@ function mapMode(modeData: any): TempsVerbe[] {
                || modeData[tenseKey]['subjonctifPasseHeSheIt']
                || modeData[tenseKey]['subjonctifPlusQueParfaitHeSheIt'];
 
-    tense.nous = modeData[tenseKey]['indicatifPresentWe'] 
-                  || modeData[tenseKey]['conditionnelPasse1reFormeWe'] 
+    tense.nous = modeData[tenseKey]['indicatifPresentWe']
+                  || modeData[tenseKey]['conditionnelPasse1reFormeWe']
                   || modeData[tenseKey]['conditionnelPasse2eFormeWe']
-                  || modeData[tenseKey]['conditionnelPresentWe']  
-                  || modeData[tenseKey]['imperatifPasseSecond'] 
-                 || modeData[tenseKey]['subjonctifPresentWe'] 
+                  || modeData[tenseKey]['conditionnelPresentWe']
+                  || modeData[tenseKey]['imperatifPasseSecond']
+                 || modeData[tenseKey]['subjonctifPresentWe']
                  || modeData[tenseKey]['imperatifPresentSecond']
                  || modeData[tenseKey]['indicatifFuturAnterieurWe']
                  || modeData[tenseKey]['indicatifFuturSimpleWe']
@@ -204,9 +204,9 @@ function mapMode(modeData: any): TempsVerbe[] {
                  || modeData[tenseKey]['subjonctifPasseWe']
                  || modeData[tenseKey]['subjonctifPlusQueParfaitWe'];
 
-    tense.vous = modeData[tenseKey]['conditionnelPasse1reFormeYouAll'] 
+    tense.vous = modeData[tenseKey]['conditionnelPasse1reFormeYouAll']
                   || modeData[tenseKey]['conditionnelPasse2eFormeYouAll']
-                  || modeData[tenseKey]['conditionnelPresentYouAll'] 
+                  || modeData[tenseKey]['conditionnelPresentYouAll']
                  || modeData[tenseKey]['indicatifFuturAnterieurYouAll']
                  || modeData[tenseKey]['indicatifFuturSimpleYouAll']
                  || modeData[tenseKey]['indicatifImparfaitYouAll']
@@ -214,18 +214,18 @@ function mapMode(modeData: any): TempsVerbe[] {
                  || modeData[tenseKey]['indicatifPasseComposeYouAll']
                  || modeData[tenseKey]['indicatifPasseSimpleYouAll']
                  || modeData[tenseKey]['indicatifPlusQueParfaitYouAll']
-                 || modeData[tenseKey]['indicatifPresentYouAll'] 
+                 || modeData[tenseKey]['indicatifPresentYouAll']
                  || modeData[tenseKey]['subjonctifImparfaitYouAll']
                  || modeData[tenseKey]['subjonctifPasseYouAll']
                  || modeData[tenseKey]['subjonctifPlusQueParfaitYouAll']
-                 || modeData[tenseKey]['subjonctifPresentYouAll'] 
+                 || modeData[tenseKey]['subjonctifPresentYouAll']
                  || modeData[tenseKey]['imperatifPresentThird']
                  || modeData[tenseKey]['imperatifPasseThird'];
 
-    tense.ils = modeData[tenseKey]['indicatifPresentThey'] 
-                || modeData[tenseKey]['conditionnelPasse1reFormeThey'] 
+    tense.ils = modeData[tenseKey]['indicatifPresentThey']
+                || modeData[tenseKey]['conditionnelPasse1reFormeThey']
                 || modeData[tenseKey]['conditionnelPasse2eFormeThey']
-                || modeData[tenseKey]['conditionnelPresentThey'] 
+                || modeData[tenseKey]['conditionnelPresentThey']
                 || modeData[tenseKey]['subjonctifPresentThey']
                 || modeData[tenseKey]['indicatifFuturAnterieurThey']
                 || modeData[tenseKey]['indicatifFuturSimpleThey']
@@ -238,7 +238,7 @@ function mapMode(modeData: any): TempsVerbe[] {
                 || modeData[tenseKey]['subjonctifPasseThey']
                 || modeData[tenseKey]['subjonctifPlusQueParfaitThey'];
 
-    
+
     //Mettre la première lettre en majuscule
     tense.je = tense.je? majusc(tense.je) : tense.je;
     tense.tu = tense.tu? majusc(tense.tu) : tense.je;
@@ -293,4 +293,3 @@ function majusc(text: string): string {
 
   return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
 }
-

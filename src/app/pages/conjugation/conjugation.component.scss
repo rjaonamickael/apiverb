@@ -1,267 +1,186 @@
-/* General Body Style */
 body {
- font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
- background-color: #f4f6f8;
- margin: 0;
- padding: 0;
- color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f3f7fb;
+  margin: 0;
+  padding: 0;
+  color: #333;
 }
 
 /* Style for the Search Bar */
 #search-bar {
- display: flex;
- align-items: center;
- justify-content: center;
- background-color: #c1f9f2;
- border-radius: 40px;
- margin: 20px auto;
- padding: 10px;
- width: 90%;
- max-width: 500px;
- box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
- transition: box-shadow 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border-radius: 50px;
+  margin: 20px auto;
+  padding: 10px 20px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
 #search-bar:hover {
- box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
- transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
 }
 
 #search-bar-input {
- flex: 1;
- border: none;
- padding: 15px;
- border-radius: 30px;
- outline: none;
- font-size: 1rem;
- margin-right: 10px;
- background-color: #fff;
- box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
- transition: box-shadow 0.3s ease, transform 0.3s ease;
+  flex: 1;
+  border: none;
+  padding: 15px;
+  border-radius: 25px;
+  outline: none;
+  font-size: 1rem;
+  margin-right: 10px;
+  background-color: #f9f9fb;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
 }
 
 #search-bar-input:focus {
- box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.2);
- transform: scale(1.02);
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: scale(1.03);
 }
 
-/* Style for the Conjuger Button */
 button {
- display: flex;
- align-items: center;
- justify-content: center;
- padding: 18px 35px; /* Increased padding for a larger button */
- border-radius: 30px;
- background: linear-gradient(135deg, #6c63ff, #4caf50);
- color: white;
- font-size: 1.2rem; /* Slightly larger font size */
- cursor: pointer;
- border: none;
- box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
- transition: background 0.3s, box-shadow 0.3s, transform 0.1s; /* Shorter transform transition */
- width: 180px; /* Fixed width */
- height: 60px; /* Fixed height */
+  padding: 12px 20px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #4fc3f7, #81c784);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
 button:hover {
- background: linear-gradient(135deg, #4caf50, #6c63ff);
- box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
- transform: translateY(-3px);
+  background: linear-gradient(135deg, #81c784, #4fc3f7);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
 }
 
 button:active {
- transform: scale(1); /* Prevent shrinking on click */
- box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(0.97);
 }
 
-/* Accordion and Panels */
-mat-accordion {
- margin: 20px auto;
- max-width: 800px;
- background-color: #f7f9fa;
- border-radius: 15px;
- box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
- padding: 20px;
- transition: box-shadow 0.3s ease;
-}
-
-mat-accordion:hover {
- box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
-
-mat-expansion-panel {
- border: 1px solid rgba(0, 0, 0, 0.1);
- border-radius: 10px;
- margin-bottom: 10px;
- overflow: hidden;
- transition: transform 0.3s ease;
-}
-
-mat-expansion-panel:hover {
- transform: translateY(-2px);
-}
-
-mat-expansion-panel-header {
- background-color: rgba(108, 99, 255, 0.1);
- color: rgb(108, 99, 255);
- padding: 15px;
- transition: background-color 0.3s;
- cursor: pointer;
-}
-
-mat-expansion-panel-header:hover {
- background-color: rgba(108, 99, 255, 0.2);
-}
-
-mat-panel-title {
- display: flex;
- align-items: center;
- gap: 15px; /* Adjust gap size as needed */
-}
-
-/* List Items */
-mat-list-item {
- padding: 10px;
- margin: 5px 0;
- border-radius: 5px;
- background-color: #e0f7fa;
- color: #333;
- transition: background-color 0.3s;
-}
-
-mat-list-item:hover {
- background-color: #b2ebf2;
-}
-
-/* Infinitif and Participle Section */
-mat-expansion-panel:last-child p {
- margin: 10px 0;
- padding: 10px;
- background-color: #e3f2fd;
- border-radius: 8px;
- box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
- transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-mat-expansion-panel:last-child p:hover {
- transform: scale(1.02);
- box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
-
-/* Verb Cards */
 .verb-container {
- display: flex;
- flex-wrap: wrap;
- justify-content: center;
- gap: 20px;
- padding: 30px;
- background-color: #f0f4f8;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 800px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  padding: 25px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.verb-card {
- background: white;
- border-radius: 15px;
- width: 250px;
- box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
- overflow: hidden;
- transition: transform 0.3s ease, box-shadow 0.3s ease;
- cursor: pointer;
- position: relative;
+.verb-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
 }
 
-.verb-card:hover {
- transform: translateY(-10px);
- box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+.verb-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
 }
 
-.verb-card-header {
- background: linear-gradient(135deg, #6c63ff, #4caf50);
- color: white;
- padding: 20px;
- font-size: 1.2rem;
- font-weight: bold;
- display: flex;
- align-items: center;
- justify-content: space-between;
+.verb-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: #2b3a42;
 }
 
-.verb-card-header i {
- font-size: 1.5rem;
+.mat-icon-button {
+  color: #ffa726;
+  transition: color 0.3s, transform 0.3s;
 }
 
-.verb-card-body {
- padding: 20px;
- color: #555;
+.mat-icon-button:hover {
+  color: #ffca28;
+  transform: scale(1.2);
 }
 
-.verb-card-body p {
- margin: 10px 0;
+.mat-expansion-panel-header {
+  border: none;
+  background-color: #f5f7fa;
+  transition: background-color 0.3s ease;
 }
 
-.verb-card-footer {
- padding: 10px;
- text-align: center;
- border-top: 1px solid #eee;
+.mat-expansion-panel-header:hover {
+  background-color: #e3e8f0;
 }
 
-.verb-card-footer button {
- padding: 10px 20px;
- background-color: #6c63ff;
- color: white;
- border: none;
- border-radius: 20px;
- cursor: pointer;
- transition: background-color 0.3s, transform 0.3s;
+.tense-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
 }
 
-.verb-card-footer button:hover {
- background-color: #4caf50;
- transform: translateY(-2px);
+.tense-list li {
+  padding: 10px;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 1rem;
+  color: #34495e;
+  background-color: #fafbfc;
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
-
-.verb-icon {
- font-size: 1.2rem;
- color: rgba(255, 255, 255, 0.8);
- margin-right: 10px;
+.tense-list li:hover {
+  background-color: #e0f2f1;
+  transform: translateX(5px);
 }
 
-/* Style for Favorite Button */
-button[mat-icon-button] {
- background-color: transparent;
- color: #6c63ff;
- border: none;
- display: flex;
- align-items: center;
- justify-content: center;
- transition: color 0.3s, transform 0.3s;
- padding: 4px; 
- border-radius: 50%;
- width: 36px;
- height: 36px;
+.infinitive-participle p {
+  margin: 8px 0;
+  font-size: 1rem;
+  color: #616161;
+  padding: 12px 15px;
+  background: #f0f3f8;
+  border-radius: 8px;
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.05);
 }
 
-button[mat-icon-button].warn {
- color: #ff4081; /* Favorite color */
+.favorites-list {
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-width: 800px;
 }
 
-button[mat-icon-button]:hover {
- color: #4caf50; /* Change color on hover */
- transform: scale(1.1); /* Slightly increase size */
- background-color: rgba(76, 175, 80, 0.1); /* Subtle background change */
+.favorites-list h3 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: #333;
 }
 
-button[mat-icon-button]:active {
- transform: scale(1); /* Return to normal size on click */
+.favorites-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-/* Favorite Star Icon */
-.mat-icon {
- font-size: 20px; /* Reduced icon size */
- transition: transform 0.3s, color 0.3s;
+.favorites-list li {
+  padding: 10px 15px;
+  border-bottom: 1px solid #ddd;
+  font-size: 1rem;
+  color: #444;
+  background-color: #f7f9fc;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-button[mat-icon-button]:hover .mat-icon {
- transform: scale(1.1); /* Less scaling effect */
- color: #ffeb3b; /* Highlight star on hover */
+.favorites-list li:hover {
+  background-color: #d0ebff;
+  transform: translateX(5px);
 }

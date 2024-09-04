@@ -5,33 +5,28 @@
     placeholder="Tapez ici le verbe à conjuguer"
     [(ngModel)]="verbToConjugate"
   />
-
   <button mat-fab color="primary" (click)="getConjugation(verbToConjugate)">
     Conjuger
   </button>
 </div>
 
-<div *ngIf="verbData">
-  
+<div *ngIf="verbData" class="verb-container">
+  <div class="verb-header">
+    <h2 class="verb-name">{{ verbData.nom }}</h2>
+    <!-- Toggle Favorite Button -->
+    <button mat-icon-button (click)="toggleFavorite(verbData)">
+      <mat-icon>{{ isFavorite(verbData) ? 'star' : 'star_border' }}</mat-icon>
+    </button>
+  </div>
+
+  <div class="verb-details">
+    <p><strong>Groupe:</strong> {{ verbData.groupe }}</p>
+    <p><strong>Auxiliaire:</strong> {{ verbData.auxiliaire }}</p>
+    <p><strong>Type:</strong> {{ verbData.type }}</p>
+    <p><strong>Règle:</strong> {{ verbData.regle }}</p>
+  </div>
+
   <mat-accordion>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Verbe : {{ verbData.nom }}
-          <button mat-icon-button (click)="toggleFavorite(verbData)">
-            <button (click)="addFavorite(verbData)" type="button">  
-              <mat-icon onclick="">{{ isFavorite(verbData) ? 'star' : 'star_border' }}</mat-icon>
-            </button>
-
-          </button>
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <p><strong>Groupe:</strong> {{ verbData.groupe }}</p>
-      <p><strong>Auxiliaire:</strong> {{ verbData.auxiliaire }}</p>
-      <p><strong>Type:</strong> {{ verbData.type }}</p>
-      <p><strong>Règle:</strong> {{ verbData.regle }}</p>
-    </mat-expansion-panel>
-
     <ng-container *ngFor="let mode of modes">
       <mat-expansion-panel *ngIf="mode.data && mode.data.length">
         <mat-expansion-panel-header>
@@ -41,14 +36,14 @@
         </mat-expansion-panel-header>
         <div *ngFor="let tense of mode.data">
           <p><strong>{{ tense.titre }}:</strong></p>
-          <mat-list>
-            <mat-list-item *ngIf="tense.je">je - {{ tense.je }}</mat-list-item>
-            <mat-list-item *ngIf="tense.tu">tu - {{ tense.tu }}</mat-list-item>
-            <mat-list-item *ngIf="tense.il">il/elle - {{ tense.il }}</mat-list-item>
-            <mat-list-item *ngIf="tense.nous">nous - {{ tense.nous }}</mat-list-item>
-            <mat-list-item *ngIf="tense.vous">vous - {{ tense.vous }}</mat-list-item>
-            <mat-list-item *ngIf="tense.ils">ils/elles - {{ tense.ils }}</mat-list-item>
-          </mat-list>
+          <ul class="tense-list">
+            <li *ngIf="tense.je">je - {{ tense.je }}</li>
+            <li *ngIf="tense.tu">tu - {{ tense.tu }}</li>
+            <li *ngIf="tense.il">il/elle - {{ tense.il }}</li>
+            <li *ngIf="tense.nous">nous - {{ tense.nous }}</li>
+            <li *ngIf="tense.vous">vous - {{ tense.vous }}</li>
+            <li *ngIf="tense.ils">ils/elles - {{ tense.ils }}</li>
+          </ul>
         </div>
       </mat-expansion-panel>
     </ng-container>
@@ -59,18 +54,20 @@
           Infinitif et Participe
         </mat-panel-title>
       </mat-expansion-panel-header>
-      <p><strong>Infinitif Présent:</strong> {{ verbData.nominale?.infinitif.present || 'Non disponible' }}</p>
-      <p><strong>Infinitif Passé:</strong> {{ verbData.nominale?.infinitif.passe || 'Non disponible' }}</p>
-      <p><strong>Participe Présent:</strong> {{ verbData.nominale?.participe.present || 'Non disponible' }}</p>
-      <p><strong>Participe Passé:</strong> {{ verbData.nominale?.participe.passe || 'Non disponible' }}</p>
+      <div class="infinitive-participle">
+        <p><strong>Infinitif Présent:</strong> {{ verbData.nominale?.infinitif.present || 'Non disponible' }}</p>
+        <p><strong>Infinitif Passé:</strong> {{ verbData.nominale?.infinitif.passe || 'Non disponible' }}</p>
+        <p><strong>Participe Présent:</strong> {{ verbData.nominale?.participe.present || 'Non disponible' }}</p>
+        <p><strong>Participe Passé:</strong> {{ verbData.nominale?.participe.passe || 'Non disponible' }}</p>
+      </div>
     </mat-expansion-panel>
   </mat-accordion>
 </div>
 
-<div *ngIf="favorites && favorites.size > 0">
+
+<div *ngIf="favorites && favorites.size > 0" class="favorites-list">
   <h3>Favoris</h3>
   <ul>
     <li *ngFor="let fav of favorites">{{ fav }}</li>
   </ul>
 </div>
-
