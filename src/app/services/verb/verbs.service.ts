@@ -22,7 +22,7 @@ export class VerbsService {
       'Content-Type': 'application/json'
     });
     const assignedToUid = '66d3e74b26fc6df2b116cf62';
-    
+
     const body = { verb, assignedToUid};
 
     return this.http.post(this.url, body, { headers });
@@ -35,15 +35,10 @@ export class VerbsService {
       'Content-Type': 'application/json'
     });
     const assignedToUid = '66d3e74b26fc6df2b116cf62';
-    
+
     const body = { verb, assignedToUid};
 
     return this.http.post(this.url, body, { headers });
 
 }
 }
-
-
-
-  
-
