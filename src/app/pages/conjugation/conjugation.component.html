@@ -14,7 +14,7 @@
   <div class="verb-header">
     <h2 class="verb-name">{{ verbData.nom }}</h2>
     <!-- Toggle Favorite Button -->
-    <button mat-icon-button (click)="toggleFavorite(verbData)">
+    <button mat-icon-button (click)="addFavorite(verbData)">
       <mat-icon>{{ isFavorite(verbData) ? 'star' : 'star_border' }}</mat-icon>
     </button>
   </div>
@@ -37,12 +37,12 @@
         <div *ngFor="let tense of mode.data">
           <p><strong>{{ tense.titre }}:</strong></p>
           <ul class="tense-list">
-            <li *ngIf="tense.je">je - {{ tense.je }}</li>
-            <li *ngIf="tense.tu">tu - {{ tense.tu }}</li>
-            <li *ngIf="tense.il">il/elle - {{ tense.il }}</li>
-            <li *ngIf="tense.nous">nous - {{ tense.nous }}</li>
-            <li *ngIf="tense.vous">vous - {{ tense.vous }}</li>
-            <li *ngIf="tense.ils">ils/elles - {{ tense.ils }}</li>
+            <li *ngIf="tense.je">{{ tense.je }}</li>
+            <li *ngIf="tense.tu">{{ tense.tu }}</li>
+            <li *ngIf="tense.il"> {{ tense.il }}</li>
+            <li *ngIf="tense.nous">{{ tense.nous }}</li>
+            <li *ngIf="tense.vous">{{ tense.vous }}</li>
+            <li *ngIf="tense.ils">{{ tense.ils }}</li>
           </ul>
         </div>
       </mat-expansion-panel>
@@ -55,10 +55,10 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
       <div class="infinitive-participle">
-        <p><strong>Infinitif Présent:</strong> {{ verbData.nominale?.infinitif.present || 'Non disponible' }}</p>
-        <p><strong>Infinitif Passé:</strong> {{ verbData.nominale?.infinitif.passe || 'Non disponible' }}</p>
-        <p><strong>Participe Présent:</strong> {{ verbData.nominale?.participe.present || 'Non disponible' }}</p>
-        <p><strong>Participe Passé:</strong> {{ verbData.nominale?.participe.passe || 'Non disponible' }}</p>
+        <p><strong>Infinitif Présent:</strong> {{ verbData.nominale?.infinitif?.present || 'Non disponible' }}</p>
+        <p><strong>Infinitif Passé:</strong> {{ verbData.nominale?.infinitif?.passe || 'Non disponible' }}</p>
+        <p><strong>Participe Présent:</strong> {{ verbData.nominale?.participe?.present || 'Non disponible' }}</p>
+        <p><strong>Participe Passé:</strong> {{ verbData.nominale?.participe?.passe || 'Non disponible' }}</p>
       </div>
     </mat-expansion-panel>
   </mat-accordion>

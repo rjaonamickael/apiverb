@@ -15,7 +15,7 @@ export class VerbsService {
   constructor() {}
 
 
-  getVerbService(verb: string): Observable<any> {
+  getVerbService(verb: string): Promise<any> {
     this.token = localStorage.getItem('x-access-token') ?? '';
     const headers = new HttpHeaders({
       'x-access-token': this.token,
@@ -25,7 +25,7 @@ export class VerbsService {
 
     const body = { verb, assignedToUid};
 
-    return this.http.post(this.url, body, { headers });
+    return this.http.post(this.url, body, { headers }).toPromise();
   }
 
   addFavoriteVerbService(verb: string): Observable<any> {
@@ -38,7 +38,18 @@ export class VerbsService {
 
     const body = { verb, assignedToUid};
 
-    return this.http.post(this.url, body, { headers });
+    return this.http.post(this.url + 'favorites', body, { headers });
 
-}
+  }
+
+  getAllFavoritesVerbService(): Observable<any> {
+    this.token = localStorage.getItem('x-access-token') ?? '';
+    const headers = new HttpHeaders({
+      'x-access-token': this.token,
+      'Content-Type': 'application/json'
+    });
+    const assignedToUid = '66d3e74b26fc6df2b116cf62';
+
+    return this.http.get(this.url + 'favorites/all', { headers });
+  }
 }
