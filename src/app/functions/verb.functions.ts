@@ -5,6 +5,7 @@ import { TempsVerbe } from "../models/temps.verb";
 import { Verbe } from "../models/verbe.model";
 import { VerbeAuxiliaire } from "../utils/auxiliaire.utils";
 import { VerbeGroupe } from "../utils/groupe.utils";
+import { lastValueFrom } from "rxjs";
 
 export class verbFunctions {
  private verbService = inject(VerbsService);
@@ -13,11 +14,17 @@ export class verbFunctions {
  verbData:Verbe = new Verbe() ;
  listFavoritesData:any;
 
- async getConjugation(verbToConjugate: string): Promise<void> {
+ async getConjugation(verbToConjugate: string): Promise<any> {
   try {
-    const data = await this.verbService.getVerbService(verbToConjugate);
+
+    const response = await new Promise<any>((resolve, reject) => {
+      this.verbService.getVerbService(verbToConjugate).subscribe({
+        next: (rep) => resolve(rep),
+        error: (error) => reject(error),
+      });
+    });
     
-    this.verbData = mapJSONToVerbe(data);
+    this.verbData = mapJSONToVerbe(response);
 
     this.modes = [
       { name: 'Indicatif', data: this.verbData?.mode.indicatif },
@@ -25,24 +32,26 @@ export class verbFunctions {
       { name: 'Subjonctif', data: this.verbData?.mode.subjonctif },
       { name: 'Impératif', data: this.verbData?.mode.imperatif }
     ];
+    
   } catch (error) {
     console.error(error);
   }
 }
 
- addFavorite(verbData: any): void {
-  console.log(verbData.nom);
+async addFavorite(verbData: any): Promise<void> {
+  try {
+    await new Promise<void>((resolve, reject) => {
+      this.verbService.addFavoriteVerbService(verbData).subscribe({
+        next: (rep) => resolve(rep),
+        error: (error) => reject(error),
+      });
+    });
 
-  this.verbService.addFavoriteVerbService(verbData.nom).subscribe({
+  } catch (error) {
 
-    next: (data) => {
-      console.log("ajouter aux favoris OK");
-    },
-    error: (error) => {
-      console.log(error);
-    }
-  });
- }
+    console.error(error);
+  }
+}
  
  async getAllFavorites(): Promise<any[]> {
   try {
@@ -53,7 +62,7 @@ export class verbFunctions {
       });
     });
 
-    return extractFavoritesVerb(response);
+    return response;
 
   } catch (error) {
     console.log(error);
@@ -61,12 +70,23 @@ export class verbFunctions {
   }
 }
 
+async deleteFavorites(id:string): Promise<void> {
+  try {
+    await new Promise<any>((resolve, reject) => {
+      this.verbService.deleteFavorites(id).subscribe({
+        next: (rep) => resolve(rep),
+        error: (error) => reject(error),
+      });
+    });
 
+  } catch (error) {
+    console.log(error);
 
+  }
 }
 
-function extractFavoritesVerb(data: any[]): string[] {
-  return data.map(item => item.verb);
+
+
 }
 
 

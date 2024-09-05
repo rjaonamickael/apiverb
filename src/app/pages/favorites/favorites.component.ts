@@ -17,8 +17,6 @@ export class FavoritesComponent implements OnInit {
 
   async getAllFavorites():Promise <void> {
     this.listVerbFavorites = await this.functions.getAllFavorites();
-    console.log("ok");
-    console.log(this.listVerbFavorites);
   }
 
   ngOnInit():void {
@@ -26,9 +24,12 @@ export class FavoritesComponent implements OnInit {
   }
 
 
+  deleteVerbFavorites(id:string){
+    this.functions.deleteFavorites(id);
+  }
 
-  
 
 
 
 }
+
