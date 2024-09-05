@@ -11,10 +11,12 @@ export class verbFunctions {
 
  modes:any;
  verbData:Verbe = new Verbe() ;
+ listFavoritesData:any;
 
  async getConjugation(verbToConjugate: string): Promise<void> {
   try {
     const data = await this.verbService.getVerbService(verbToConjugate);
+    
     this.verbData = mapJSONToVerbe(data);
 
     this.modes = [
@@ -42,22 +44,30 @@ export class verbFunctions {
   });
  }
  
- getAllFavorites(): void {
-  this.verbService.getAllFavoritesVerbService().subscribe({
-    next: (rep) => {
-      let data = rep.verbs;
-      console.log(data);
-    },
-    error: (error) => {
-      console.log(error);
-    }
-  });
- }
+ async getAllFavorites(): Promise<any[]> {
+  try {
+    const response = await new Promise<any[]>((resolve, reject) => {
+      this.verbService.getAllFavoritesVerbService().subscribe({
+        next: (rep) => resolve(rep.verbs),
+        error: (error) => reject(error),
+      });
+    });
+
+    return extractFavoritesVerb(response);
+
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+}
 
 
 
 }
 
+function extractFavoritesVerb(data: any[]): string[] {
+  return data.map(item => item.verb);
+}
 
 
  function mapJSONToVerbe(data: any): Verbe {
