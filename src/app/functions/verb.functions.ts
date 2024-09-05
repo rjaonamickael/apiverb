@@ -23,7 +23,7 @@ export class verbFunctions {
         error: (error) => reject(error),
       });
     });
-    
+
     this.verbData = mapJSONToVerbe(response);
 
     this.modes = [
@@ -32,7 +32,7 @@ export class verbFunctions {
       { name: 'Subjonctif', data: this.verbData?.mode.subjonctif },
       { name: 'Impératif', data: this.verbData?.mode.imperatif }
     ];
-    
+
   } catch (error) {
     console.error(error);
   }
@@ -52,23 +52,35 @@ async addFavorite(verbData: any): Promise<void> {
     console.error(error);
   }
 }
- 
- async getAllFavorites(): Promise<any[]> {
+
+async getAllFavorites(): Promise<any[]> {
   try {
+    // Using a Promise wrapper around the Observable to await its result
     const response = await new Promise<any[]>((resolve, reject) => {
       this.verbService.getAllFavoritesVerbService().subscribe({
-        next: (rep) => resolve(rep.verbs),
-        error: (error) => reject(error),
+        next: (rep) => {
+          if (rep && rep.verbs) {
+            resolve(rep.verbs);  // Assuming 'rep.verbs' contains the list of verbs
+          } else {
+            reject('Unexpected response structure');
+          }
+        },
+        error: (error) => {
+          console.error('Error fetching favorites:', error); // Log the error for debugging
+          reject(error);
+        },
       });
     });
 
     return response;
 
   } catch (error) {
-    console.log(error);
+    // Log the error and return an empty array in case of failure
+    console.log('Failed to fetch favorites:', error);
     return [];
   }
 }
+
 
 async deleteFavorites(id:string): Promise<void> {
   try {
@@ -287,4 +299,4 @@ function majusc(text: string): string {
   return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
 }
 
- 
+

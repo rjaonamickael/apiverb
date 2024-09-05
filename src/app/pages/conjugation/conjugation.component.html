@@ -13,7 +13,7 @@
 <div *ngIf="verbData" class="verb-container">
   <div class="verb-header">
     <h2 class="verb-name">{{ verbData.nom }}</h2>
-    <!-- Toggle Favorite Button -->
+
     <button mat-icon-button (click)="addFavorite(verbData)">
       <mat-icon>{{ isFavorite(verbData) ? 'star' : 'star_border' }}</mat-icon>
     </button>
