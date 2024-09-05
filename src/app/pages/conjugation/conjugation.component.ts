@@ -25,20 +25,20 @@ export class ConjugationComponent {
   verbData$ = new BehaviorSubject<any>(null);
 
   modes:any;
-  favorites: Set<string> = new Set(); // Store favorite verbs
+  favorites: Set<string> = new Set(); 
 
   constructor() {}
 
-  //Importations des fonctions qui seront utilisées
+
   async addFavorite(verb:string){
     await this.verbFunctions.addFavorite(verb);
   }
 
   async getConjugation(verbToConjugate:string): Promise<void> {
-    
+
     await this.verbFunctions.getConjugation(verbToConjugate);
 
-    // Assigner une nouvelle référence à verbData
+
     this.verbData = this.verbFunctions.verbData;
     this.modes = this.verbFunctions.modes;
 
