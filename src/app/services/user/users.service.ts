@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable, inject, signal } from '@angular/core';
 import { User } from '../../models/user.model';
 import { Observable, catchError, map, tap, throwError } from 'rxjs';
+import { environment } from '../../../environment';
 
 export interface Credentials{
   email: string;
@@ -12,10 +13,11 @@ export interface Credentials{
 @Injectable({
   providedIn: 'root'
 })
-export class UsersService {
 
+export class UsersService {
   private http = inject(HttpClient);
-  private BASE_URL = 'https://seal-app-v5cj7.ondigitalocean.app/v0/';
+  private BASE_URL = environment.BASE_URL + 'users/';
+  private token: string | null = null;
 
   user = signal< User | null | undefined>(undefined);
 
@@ -27,7 +29,7 @@ export class UsersService {
   constructor() { }
 
   register(credentials: Credentials): Observable<any> {
-    return this.http.post<any>(this.BASE_URL + 'users/signup', credentials, this.httpOptions).pipe(
+    return this.http.post<any>(this.BASE_URL + 'signup', credentials, this.httpOptions).pipe(
       tap((response) => {
         console.log('Signup success:', response);
       }),
@@ -46,7 +48,7 @@ export class UsersService {
   }
 
   login(credentials: Credentials): Observable<User | null | undefined> {
-    return this.http.post(this.BASE_URL + 'users/login',credentials)
+    return this.http.post(this.BASE_URL + 'login',credentials)
               .pipe(tap((result:any) => {
                 //localStorage.clear();
                 

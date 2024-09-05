@@ -1,6 +1,6 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { catchError, map, Observable, tap, throwError } from 'rxjs';
+import { Observable} from 'rxjs';
 import { environment } from '../../../environment';
 
 @Injectable({
@@ -27,7 +27,6 @@ export class VerbsService {
   }
 
   addFavoriteVerbService(verb: string): Observable<any> {
-    console.log("test");
     this.token = localStorage.getItem('x-access-token') ?? '';
     const headers = new HttpHeaders({
       'x-access-token': this.token,
@@ -49,14 +48,26 @@ export class VerbsService {
     return this.http.get(this.url + 'favorites/all', { headers });
   }
 
-  deleteFavorites(id: string): Observable<any> {
+  deleteFavoritesVerbService(id: string): Observable<any> {
     this.token = localStorage.getItem('x-access-token') ?? '';
     const headers = new HttpHeaders({
       'x-access-token': this.token,
       'Content-Type': 'application/json'
     });
   
-    return this.http.delete(`${this.url}favorites/${id}`, { headers });
+    return this.http.delete(this.url + 'favorites/'+`${id}`, { headers });
+  }
+
+  getRandomVerbService(quantity: number): Observable<any> {
+    this.token = localStorage.getItem('x-access-token') ?? '';
+    const headers = new HttpHeaders({
+      'x-access-token': this.token,
+      'Content-Type': 'application/json'
+    });
+    const body = {quantity};
+
+    return this.http.post(this.url + 'random', body, { headers });
+
   }
 
 

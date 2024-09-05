@@ -5,7 +5,6 @@ import { TempsVerbe } from "../models/temps.verb";
 import { Verbe } from "../models/verbe.model";
 import { VerbeAuxiliaire } from "../utils/auxiliaire.utils";
 import { VerbeGroupe } from "../utils/groupe.utils";
-import { lastValueFrom } from "rxjs";
 
 export class verbFunctions {
  private verbService = inject(VerbsService);
@@ -55,18 +54,18 @@ async addFavorite(verbData: any): Promise<void> {
 
 async getAllFavorites(): Promise<any[]> {
   try {
-    // Using a Promise wrapper around the Observable to await its result
+    
     const response = await new Promise<any[]>((resolve, reject) => {
       this.verbService.getAllFavoritesVerbService().subscribe({
         next: (rep) => {
           if (rep && rep.verbs) {
-            resolve(rep.verbs);  // Assuming 'rep.verbs' contains the list of verbs
+            resolve(rep.verbs);  
           } else {
             reject('Unexpected response structure');
           }
         },
         error: (error) => {
-          console.error('Error fetching favorites:', error); // Log the error for debugging
+          console.error('Error fetching favorites:', error); 
           reject(error);
         },
       });
@@ -81,11 +80,10 @@ async getAllFavorites(): Promise<any[]> {
   }
 }
 
-
 async deleteFavorites(id:string): Promise<void> {
   try {
     await new Promise<any>((resolve, reject) => {
-      this.verbService.deleteFavorites(id).subscribe({
+      this.verbService.deleteFavoritesVerbService(id).subscribe({
         next: (rep) => resolve(rep),
         error: (error) => reject(error),
       });
@@ -97,6 +95,24 @@ async deleteFavorites(id:string): Promise<void> {
   }
 }
 
+async getRandom(quantity: number): Promise<any[]> {
+  try {
+    const response = await new Promise<any[]>((resolve, reject) => {
+      this.verbService.getRandomVerbService(quantity).subscribe({
+        next: (rep) => resolve(rep),
+        error: (error) => reject(error),
+      });
+    });
+
+    return response;
+    
+  } catch (error) {
+
+    console.error(error);
+
+    return [];
+  }
+}
 
 
 }
