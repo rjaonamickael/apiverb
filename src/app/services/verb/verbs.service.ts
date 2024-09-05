@@ -55,9 +55,18 @@ export class VerbsService {
       'x-access-token': this.token,
       'Content-Type': 'application/json'
     });
-  
+
     return this.http.delete(`${this.url}favorites/${id}`, { headers });
   }
+  getRandomVerbs(quantity: number): Observable<any> {
+    this.token = localStorage.getItem('x-access-token') ?? '';
+    const headers = new HttpHeaders({
+      'x-access-token': this.token,
+      'Content-Type': 'application/json'
+    });
+    const body = { quantity };
 
+    return this.http.post(`${this.url}random`, body, { headers });
+  }
 
 }
