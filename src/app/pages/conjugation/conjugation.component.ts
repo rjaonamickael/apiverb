@@ -30,7 +30,9 @@ export class ConjugationComponent {
   constructor() {}
 
   //Importations des fonctions qui seront utilisées
-  addFavorite   = this.verbFunctions.addFavorite;
+  async addFavorite(verb:string){
+    await this.verbFunctions.addFavorite(verb);
+  }
 
   async getConjugation(verbToConjugate:string): Promise<void> {
     

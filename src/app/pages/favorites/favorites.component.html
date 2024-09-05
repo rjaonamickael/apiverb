@@ -2,6 +2,8 @@
 zezrezer
 
 <div *ngFor="let verbe of listVerbFavorites">
-    <div>{{verbe}}</div>
-    <button >Supprimer</button>
+    <div>{{verbe.verb}} : {{verbe.uid}}</div>
+    <button mat-fab color="primary" (click)="deleteVerbFavorites(verbe.uid)">
+        Supprimer
+    </button>
 </div>
