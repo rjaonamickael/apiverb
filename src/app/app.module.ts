@@ -1,18 +1,18 @@
+// src/app/app.module.ts
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [
-  ],
+  declarations: [],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule 
+    FormsModule,
   ],
   providers: [],
-  bootstrap: [],
-  
+  bootstrap: []
 })
 export class AppModule { }

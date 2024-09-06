@@ -54,18 +54,18 @@ async addFavorite(verbData: any): Promise<void> {
 
 async getAllFavorites(): Promise<any[]> {
   try {
-    
+
     const response = await new Promise<any[]>((resolve, reject) => {
       this.verbService.getAllFavoritesVerbService().subscribe({
         next: (rep) => {
           if (rep && rep.verbs) {
-            resolve(rep.verbs);  
+            resolve(rep.verbs);
           } else {
             reject('Unexpected response structure');
           }
         },
         error: (error) => {
-          console.error('Error fetching favorites:', error); 
+          console.error('Error fetching favorites:', error);
           reject(error);
         },
       });
@@ -98,18 +98,15 @@ async deleteFavorites(id:string): Promise<void> {
 async getRandom(quantity: number): Promise<any[]> {
   try {
     const response = await new Promise<any[]>((resolve, reject) => {
-      this.verbService.getRandomVerbService(quantity).subscribe({
-        next: (rep) => resolve(rep),
-        error: (error) => reject(error),
+      this.verbService.getRandomVerbs(quantity).subscribe({
+        next: (rep: any) => resolve(rep), // Typage explicite pour `rep` si nécessaire
+        error: (error: any) => reject(error), // Ajout du type `any` pour `error`
       });
     });
 
     return response;
-    
   } catch (error) {
-
-    console.error(error);
-
+    console.error('Error fetching random verbs:', error);
     return [];
   }
 }
