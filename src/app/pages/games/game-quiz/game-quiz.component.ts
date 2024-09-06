@@ -9,7 +9,7 @@ import { NiveauQuiz } from '../../../utils/niveau-quiz.utils';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './game-quiz.component.html',
-  styleUrl: './game-quiz.component.scss'
+  styleUrls: ['./game-quiz.component.scss']
 })
 export class GameQuizComponent implements OnInit{
   private functions = new verbFunctions();

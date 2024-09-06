@@ -79,7 +79,7 @@ button[mat-fab] {
   justify-content: center;
   padding: 10px 20px;
   border-radius: 50px;
-  background: linear-gradient(135deg, #4fc3f7, #81c784);
+  background: linear-gradient(135deg, #f44336, #e57373); /* Dégradé de rouge */
   color: white;
   font-size: 1rem;
   cursor: pointer;
@@ -90,7 +90,7 @@ button[mat-fab] {
 }
 
 button[mat-fab]:hover {
-  background: linear-gradient(135deg, #81c784, #4fc3f7); 
+  background: linear-gradient(135deg, #e57373, #f44336); /* Inverse le dégradé pour l'effet de survol */
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
   transform: translateY(-2px);
 }

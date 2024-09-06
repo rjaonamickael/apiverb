@@ -20,7 +20,7 @@ header h1 {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Styles pour le top-bar et les options du menu */
+
 .top-bar {
   display: flex;
   justify-content: space-between;
@@ -49,48 +49,54 @@ header h1 {
   position: relative;
 }
 
+
 .options a {
   color: white;
   text-decoration: none;
   padding: 10px 15px;
   border-radius: 5px;
-  transition: background-color 0.3s, transform 0.3s;
-}
-
-.options a:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Styles pour le bouton de déconnexion */
-.logout-link {
-  background-color: #FF5252; /* Couleur rouge distincte */
-  padding: 10px 20px;
-  border-radius: 30px; /* Rendre le bouton arrondi pour le différencier */
-  font-weight: bold;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Ajouter une ombre pour le faire ressortir */
-  transition: background-color 0.3s, transform 0.3s;
-  margin-left: 20px; /* Espacement supplémentaire pour le distinguer */
-}
-
-.logout-link:hover {
-  background-color: #D32F2F; /* Couleur plus sombre au survol */
-  transform: scale(1.05); /* Légère augmentation de la taille pour un effet d'interaction */
+  transition: background-color 0.2s ease-in-out;
   cursor: pointer;
 }
 
-/* Correction des classes spécifiques pour le logout */
-.options a.logout-link, .options a[routerLink="/logout"], .options a[click="logout()"] {
-  background-color: #FF5252; /* Rouge vif pour différencier */
+
+.options a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: none;
+}
+
+
+
+
+.logout-link {
+  background-color: #FF5252;
   padding: 10px 20px;
-  border-radius: 30px; /* Bouton arrondi distinct */
+  border-radius: 30px;
   font-weight: bold;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Ombre ajoutée */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, transform 0.3s;
+  margin-left: 20px;
+}
+
+.logout-link:hover {
+  background-color: #D32F2F;
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+
+.options a.logout-link, .options a[routerLink="/logout"], .options a[click="logout()"] {
+  background-color: #FF5252;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s, transform 0.3s;
 }
 
 .options a.logout-link:hover, .options a[routerLink="/logout"]:hover, .options a[click="logout()"]:hover {
-  background-color: #D32F2F; /* Couleur plus sombre au survol */
-  transform: scale(1.05); /* Légère augmentation de taille au survol */
+  background-color: #D32F2F;
+  transform: scale(1.05);
   cursor: pointer;
 }
 
@@ -120,6 +126,7 @@ header h1 {
   gap: 30px;
 }
 
+
 .feature-card {
   background: white;
   border-radius: 15px;
@@ -129,17 +136,18 @@ header h1 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease;
   text-align: center;
   padding: 20px;
 }
 
+
 .feature-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  transform: none;
 }
 
-.feature-card h3 {
+feature-card h3 {
   color: #6C63FF;
   margin: 20px 0 10px;
 }
@@ -149,6 +157,7 @@ header h1 {
   color: #555;
   flex-grow: 1;
 }
+
 
 .btn {
   display: inline-block;
@@ -161,11 +170,22 @@ header h1 {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   margin-top: 10px;
   align-self: center;
+  width: 100%;
+  max-width: 220px;
+  text-align: center;
+  font-size: 1rem;
+  cursor: pointer;
 }
+
 
 .btn:hover {
   background-color: #4CAF50;
   transform: scale(1.05);
+}
+
+
+.btn:active {
+  transform: scale(0.97);
 }
 
 footer {

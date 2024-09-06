@@ -54,18 +54,18 @@ async addFavorite(verbData: any): Promise<void> {
 
 async getAllFavorites(): Promise<any[]> {
   try {
-    
+
     const response = await new Promise<any[]>((resolve, reject) => {
       this.verbService.getAllFavoritesVerbService().subscribe({
         next: (rep) => {
           if (rep && rep.verbs) {
-            resolve(rep.verbs);  
+            resolve(rep.verbs);
           } else {
             reject('Unexpected response structure');
           }
         },
         error: (error) => {
-          console.error('Error fetching favorites:', error); 
+          console.error('Error fetching favorites:', error);
           reject(error);
         },
       });
@@ -105,11 +105,8 @@ async getRandom(quantity: number): Promise<any[]> {
     });
 
     return response;
-    
   } catch (error) {
-
-    console.error(error);
-
+    console.error('Error fetching random verbs:', error);
     return [];
   }
 }

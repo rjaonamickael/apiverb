@@ -24,7 +24,7 @@ export class ConjugationComponent {
   verbData:any;
 
   modes:any;
-  favorites: Set<string> = new Set(); 
+  favorites: Set<string> = new Set();
 
   constructor() {}
 

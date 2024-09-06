@@ -4,7 +4,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ConjugationComponent } from './pages/conjugation/conjugation.component';
 import { FavoritesComponent } from './pages/favorites/favorites.component';
-import { GamesHomeComponent } from './pages/games/games-home/games-home.component';
+import { GamesHomeComponent } from './pages/games/GameHome/GameHome.component';
 import { GameQuizComponent } from './pages/games/game-quiz/game-quiz.component';
 import { GameConjugationComponent } from './pages/games/game-conjugation/game-conjugation.component';
 
@@ -12,7 +12,7 @@ import { GameConjugationComponent } from './pages/games/game-conjugation/game-co
 export const routes: Routes = [
    {path:'',redirectTo:"home",pathMatch:"full"},
    {path: 'register', component:RegisterComponent},
-   {path: 'login', component:LoginComponent},   
+   {path: 'login', component:LoginComponent},
    {path: 'home', component:HomeComponent},
    {path: 'conjugation', component:ConjugationComponent},
    {path: 'favorites', component:FavoritesComponent},

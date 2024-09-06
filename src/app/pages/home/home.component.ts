@@ -1,7 +1,6 @@
+// src/app/pages/home/home.component.ts
 import { Component, inject, OnDestroy } from '@angular/core';
-import { UsersService } from '../../services/user/users.service';
 import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-home',
@@ -9,13 +8,8 @@ import { Router } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-
 export class HomeComponent implements OnDestroy {
-
-  private usersService = inject(UsersService);
   private router = inject(Router);
- 
-
 
   navigateToConjugation() {
     this.router.navigate(['conjugation']);
@@ -25,19 +19,15 @@ export class HomeComponent implements OnDestroy {
     this.router.navigate(['favorites']);
   }
 
+  navigateToGamesHome() {
+    this.router.navigate(['games']);
+  }
 
   logout(): void {
-
     localStorage.removeItem('x-access-token');
     localStorage.removeItem('user_name');
-
-
-    this.usersService.user.set(null);
-
-
     this.router.navigate(['/login']);
   }
 
   ngOnDestroy(): void { }
-
 }
