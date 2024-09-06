@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { UsersService } from '../../services/user/users.service';
-import { Router } from 'express';
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-header-loged',
@@ -22,7 +22,6 @@ export class HeaderLogedComponent {
 
 
     this.usersService.user.set(null);
-
 
     this.router.navigate(['/login']);
   }
