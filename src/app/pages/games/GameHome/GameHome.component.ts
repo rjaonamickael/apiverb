@@ -16,6 +16,10 @@ export class GamesHomeComponent   {
   navigateToquiz() {
     this.router.navigate(['games/quiz']);
   }
+  navigateToGameConjugation() {
+    this.router.navigate(['games/conjugation']);
+  }
+
   logout(): void {
 
     localStorage.removeItem('x-access-token');
