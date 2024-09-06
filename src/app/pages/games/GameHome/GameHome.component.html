@@ -1,0 +1,35 @@
+<header>
+  <div class="top-bar">
+    <div class="logo">
+      <h1>Bienvenue sur l'Application des Verbes Français</h1>
+    </div>
+    <nav class="options">
+      <ul>
+        <li><a routerLink="/games-home">Jeu de Conjugaison</a></li>
+        <li><a routerLink="/consultation-conjugaison">Consultation de Conjugaison</a></li>
+        <li><a routerLink="/quiz-verbes">Quiz de Verbes</a></li>
+        <li><a routerLink="/application-educative">Application Éducative</a></li>
+        <li><a (click)="logout()"><i class="fas fa-sign-out-alt logout-icon"></i></a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<section class="features">
+  <div class="feature-card">
+    <i class="fas fa-gamepad fa-3x icon" style="color: #6C63FF; margin-top: 20px;"></i>
+    <h3>Jeu de Conjugaison</h3>
+    <p>Défiez vos connaissances en conjuguant des verbes à différents temps et personnes, avec un système de points et de niveaux.</p>
+    <button class="btn">Jouer Maintenant</button>
+  </div>
+
+  <div class="feature-card">
+    <i class="fas fa-question-circle fa-3x icon" style="color: #6C63FF; margin-top: 20px;"></i>
+    <h3>Quiz de Verbes</h3>
+    <p>Testez vos connaissances avec des quiz dynamiques et mesurez vos compétences en conjugaison des verbes.</p>
+    <a class="btn" (click)="navigateToquiz()">Jouer Maintenant</a>
+  </div>
+</section>
+
+

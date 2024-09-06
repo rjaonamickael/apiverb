@@ -5,7 +5,7 @@
     </div>
     <nav class="options">
       <ul>
-        <li><a routerLink="/jeu-conjugaison">Jeu de Conjugaison</a></li>
+        <li><a routerLink="/games-home">Jeu de Conjugaison</a></li>
         <li><a routerLink="/consultation-conjugaison">Consultation de Conjugaison</a></li>
         <li><a routerLink="/quiz-verbes">Quiz de Verbes</a></li>
         <li><a routerLink="/application-educative">Application Éducative</a></li>
@@ -13,13 +13,13 @@
       </ul>
     </nav>
   </div>
- </header>
- 
+</header>
+
 <section class="hero">
   <div class="hero-content">
     <h2>Explorez et maîtrisez les verbes français</h2>
     <p>Notre application vous permet de découvrir, conjuguer et interagir avec des verbes français d'une manière facile et intuitive. Commencez dès maintenant et améliorez vos compétences linguistiques !</p>
-    <a class="btn" (click)="navigateToConjugation()" >Commencez Maintenant</a>
+    <a class="btn" (click)="navigateToConjugation()">Commencez Maintenant</a>
   </div>
 </section>
 
@@ -28,22 +28,17 @@
     <i class="fas fa-gamepad fa-3x" style="color: #6C63FF; margin-top: 20px;"></i>
     <h3>Jeu de Conjugaison</h3>
     <p>Défiez vos connaissances en conjuguant des verbes à différents temps et personnes, avec un système de points et de niveaux.</p>
-    <button class="btn">Jouer Maintenant</button>
+    <a class="btn" (click)="navigateToGamesHome()">Jouer Maintenant</a>
+
   </div>
 
   <div id="consultation" class="feature-card">
     <i class="fas fa-book fa-3x" style="color: #6C63FF; margin-top: 20px;"></i>
-    <h3>Consultation de Conjugaison</h3>
-    <p>Consultez facilement la conjugaison complète de n'importe quel verbe français à tous les temps verbaux.</p>
+    <h3>Consultations des Verbes Favoris</h3>
+    <p>Accédez rapidement à vos verbes favoris et consultez leurs conjugaisons complètes à tous les temps verbaux.</p>
     <button class="btn" (click)="navigateToAllFavorites()">Consulter Maintenant</button>
-  </div>
+</div>
 
-  <div id="quiz" class="feature-card">
-    <i class="fas fa-question-circle fa-3x" style="color: #6C63FF; margin-top: 20px;"></i>
-    <h3>Quiz de Verbes</h3>
-    <p>Testez vos connaissances avec des quiz dynamiques et mesurez vos compétences en conjugaison des verbes.</p>
-    <button class="btn">Commencer le Quiz</button>
-  </div>
 
   <div id="educative" class="feature-card">
     <i class="fas fa-chalkboard-teacher fa-3x" style="color: #6C63FF; margin-top: 20px;"></i>
