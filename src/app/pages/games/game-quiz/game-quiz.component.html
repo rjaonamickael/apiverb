@@ -1,0 +1,49 @@
+<div>
+  <label for="niveauChoix">Choisissez le niveau de difficulté</label>
+  <select name="niveauChoix" id="niveauChoix" (change)="onNiveauChange($event)">
+    <option *ngFor="let option of niveauOptions" [value]="option.value">
+      {{ option.label }}
+    </option>
+  </select>
+</div>
+
+@if(!isLoading && randomVerbs){
+  <div>
+    @for(verb of randomVerbs; track verb){	
+      <br>
+      <div>
+        <div>{{verb.nom}}</div>
+        <div>
+          <label for="auxiliaire">Auxiliaire </label>
+          <select name="" id="auxiliaireChoix">
+            <option value="avoir">Avoir</option>
+            <option value="etre">Être</option>
+          </select>
+        </div>
+    
+        @if(selectedNiveau >= niveauOptions[1].value){
+          <div>
+            <label for="groupe">Groupe </label>
+            <select name="" id="groupeChoix">
+              <option value="1ᵉʳ groupe">1ᵉʳ groupe</option>
+              <option value="2ᵉᵐᵉ groupe">2ᵉᵐᵉ groupe</option>
+              <option value="3ᵉᵐᵉ groupe">3ᵉᵐᵉ groupe</option>
+            </select>
+          </div>
+        }
+    
+        @if(selectedNiveau == niveauOptions[2].value){
+          <div>
+            <label for="type">Type </label>
+            <select name="" id="typeChoix">
+              <option value="Transitif">Transitif</option>
+              <option value="Intransitif">Intransitif</option>
+              <option value="Ambitransitif">Ambitransitif</option>
+            </select>
+          </div>
+        }
+      </div>
+    }
+  </div>
+}
+

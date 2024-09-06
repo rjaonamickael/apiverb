@@ -18,5 +18,6 @@ export const routes: Routes = [
    {path: 'favorites', component:FavoritesComponent},
    {path: 'games', component:GamesHomeComponent},
    {path: 'games/quiz', component:GameQuizComponent},
-   {path: 'games/conjugation', component:GameConjugationComponent}
+   {path: 'games/conjugation', component:GameConjugationComponent},
+   { path:'**',component: HomeComponent}
 ];

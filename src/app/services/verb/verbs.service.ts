@@ -43,7 +43,7 @@ export class VerbsService {
     return this.http.delete(`${this.url}favorites/${id}`, { headers });
   }
 
-  getRandomVerbs(quantity: number): Observable<any> {
+  getRandomVerbService(quantity: number): Observable<any> {
     const headers = this.getHeaders();
     const body = { quantity };
     return this.http.post(`${this.url}random`, body, { headers });
