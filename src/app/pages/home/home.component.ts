@@ -1,12 +1,14 @@
 // src/app/pages/home/home.component.ts
 import { Component, inject, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { HeaderLogedComponent } from "../../components/header-loged/header-loged.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  imports: [HeaderLogedComponent]
 })
 export class HomeComponent implements OnDestroy {
   private router = inject(Router);

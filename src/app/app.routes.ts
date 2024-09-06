@@ -7,17 +7,42 @@ import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { GamesHomeComponent } from './pages/games/GameHome/GameHome.component';
 import { GameQuizComponent } from './pages/games/game-quiz/game-quiz.component';
 import { GameConjugationComponent } from './pages/games/game-conjugation/game-conjugation.component';
+import { isLoggedGuard } from './security/guards/is-logged.guard';
 
 
 export const routes: Routes = [
    {path:'',redirectTo:"home",pathMatch:"full"},
-   {path: 'register', component:RegisterComponent},
-   {path: 'login', component:LoginComponent},
-   {path: 'home', component:HomeComponent},
-   {path: 'conjugation', component:ConjugationComponent},
-   {path: 'favorites', component:FavoritesComponent},
-   {path: 'games', component:GamesHomeComponent},
-   {path: 'games/quiz', component:GameQuizComponent},
-   {path: 'games/conjugation', component:GameConjugationComponent},
-   { path:'**',component: HomeComponent}
+   {
+      path: 'register', 
+      component:RegisterComponent},
+   {
+      path: 'login', 
+      component:LoginComponent},
+   {
+      path: 'home', 
+      component:HomeComponent,
+      canActivate:[isLoggedGuard]
+   },
+   {
+      path: 'conjugation', 
+      component:ConjugationComponent,
+      canActivate:[isLoggedGuard]
+   },
+   {
+      path: 'favorites', 
+      component:FavoritesComponent,
+      canActivate:[isLoggedGuard]
+   },
+   {
+      path: 'games', 
+      children:[
+         {path:"", component:GamesHomeComponent},
+         {path:"quiz", component:GameQuizComponent},
+         {path:"conjugation", component:GameConjugationComponent}  
+      ],
+      canActivate:[isLoggedGuard]
+   },
+   { 
+      path:'**',
+      component: HomeComponent}
 ];
