@@ -99,7 +99,7 @@ async getRandom(quantity: number): Promise<any[]> {
   try {
     const response = await new Promise<any[]>((resolve, reject) => {
       this.verbService.getRandomVerbService(quantity).subscribe({
-        next: (rep) => resolve(rep),
+        next: (rep) => resolve(rep.verbs),
         error: (error) => reject(error),
       });
     });

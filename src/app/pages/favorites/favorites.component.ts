@@ -13,6 +13,8 @@ import { MatIconModule } from '@angular/material/icon';
 export class FavoritesComponent implements OnInit {
   listVerbFavorites: any[] = [];
   private functions = new verbFunctions();
+
+  
   async getAllFavorites(): Promise<void> {
     try {
       this.listVerbFavorites = await this.functions.getAllFavorites();

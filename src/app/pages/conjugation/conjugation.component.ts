@@ -22,7 +22,6 @@ export class ConjugationComponent {
   @Input() verbeConjuge!: Verbe;
   verbToConjugate: string = '';
   verbData:any;
-  verbData$ = new BehaviorSubject<any>(null);
 
   modes:any;
   favorites: Set<string> = new Set(); 
