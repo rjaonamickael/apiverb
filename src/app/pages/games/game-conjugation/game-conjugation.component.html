@@ -1,0 +1,18 @@
+<div class="quiz-container">
+    <h2>Quiz de Conjugaison</h2>
+  
+    <button (click)="random()">Commencer le Quiz</button>
+  
+    <div *ngIf="randomVerbs.length > 0">
+      <h3>Questions :</h3>
+      <ul>
+        <li *ngFor="let verb of randomVerbs; let i = index">
+          <p>Question {{ i + 1 }}: Conjuguez le verbe '{{ verb }}' à la première personne du singulier au futur antérieur.</p>
+          <input type="text" [(ngModel)]="userAnswers[i]" placeholder="Votre réponse ici">
+        </li>
+      </ul>
+      <button (click)="submitQuiz()">Soumettre le Quiz</button>
+    </div>
+</div>
+  
+  

@@ -1,0 +1,114 @@
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f4f8;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+
+.favorites-container {
+  padding: 20px;
+  max-width: 700px;
+  margin: 40px auto;
+  background: linear-gradient(145deg, #ffffff, #e6e9f0);
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.favorites-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+
+.favorites-title {
+  text-align: center;
+  font-size: 28px;
+  color: #2b3a42;
+  margin-bottom: 20px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+
+.verb-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  margin: 15px 0;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.verb-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  background: linear-gradient(145deg, #e3f2fd, #e1f5fe);
+}
+
+
+.verb-details {
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+}
+
+.verb-name {
+  font-size: 22px;
+  font-weight: bold;
+  color: #37474f;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.verb-item:hover .verb-name {
+  color: #1e88e5;
+}
+
+
+button[mat-fab] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #f44336, #e57373); /* Dégradé de rouge */
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+button[mat-fab]:hover {
+  background: linear-gradient(135deg, #e57373, #f44336); /* Inverse le dégradé pour l'effet de survol */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+button[mat-fab]:active {
+  transform: scale(0.97);
+}
+
+.mat-icon-button {
+  color: #ffa726;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.mat-icon-button:hover {
+  color: #ffca28;
+  transform: scale(1.2);
+}
+
+button[mat-fab] mat-icon {
+  font-size: 20px;
+}

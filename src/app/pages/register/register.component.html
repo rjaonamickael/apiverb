@@ -1,23 +1,27 @@
 <div id="container">
-   <form action="" (submit)="register()" [formGroup]="registerFormGroup">
-      <h3>Register</h3>
+  <form (submit)="register()" [formGroup]="registerFormGroup">
+     <h3>Register</h3>
 
-      <mat-form-field>
-         <mat-label > Email Adresse </mat-label>
-         <input matInput  formControlName="email">
-      </mat-form-field>
-      <mat-form-field>
-         <mat-label > Name </mat-label>
-         <input matInput  formControlName="name">
-      </mat-form-field>
-      <mat-form-field>
-         <mat-label > Password </mat-label>
-         <input matInput type="password" formControlName="password">   
-      </mat-form-field>
-      <button mat-flat-button type="submit" [disabled]="registerFormGroup.invalid">Register</button>
-      @if(invalidCredentials){
-         <mat-error>Email déja utilisé</mat-error>
-      }
-      
-   </form>
+     <mat-form-field appearance="fill">
+        <mat-label>Email Adresse</mat-label>
+        <input matInput formControlName="email" placeholder="Entrez votre email">
+     </mat-form-field>
+
+     <mat-form-field appearance="fill">
+        <mat-label>Nom</mat-label>
+        <input matInput formControlName="name" placeholder="Entrez votre nom">
+     </mat-form-field>
+
+     <mat-form-field appearance="fill">
+        <mat-label>Mot de passe</mat-label>
+        <input matInput type="password" formControlName="password" placeholder="Entrez votre mot de passe">
+     </mat-form-field>
+
+     <button mat-flat-button type="submit" [disabled]="registerFormGroup.invalid">S'inscrire</button>
+
+     <mat-error *ngIf="invalidCredentials">Email déjà utilisé</mat-error>
+
+   
+     <button mat-button type="button" (click)="navigateLogin()" class="login-button">Déjà inscrit? Connectez-vous</button>
+  </form>
 </div>

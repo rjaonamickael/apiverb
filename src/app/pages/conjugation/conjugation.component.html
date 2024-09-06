@@ -1,30 +1,74 @@
-<p>home works!</p>
 
-<!-- <button mat-flat-button color="primary" (click)="getVerb()">Get Verb</button> -->
+<div id="search-bar">
+  <input
+    type="text"
+    id="search-bar-input"
+    placeholder="Tapez ici le verbe à conjuguer"
+    [(ngModel)]="verbToConjugate"
+  />
+  <button mat-fab color="primary" (click)="getConjugation(verbToConjugate)">
+    Conjuger
+  </button>
+</div>
+
+<div *ngIf="verbData" class="verb-container">
+  <div class="verb-header">
+    <h2 class="verb-name">{{ verbData.nom }}</h2>
+
+    <button mat-icon-button (click)="addFavorite(verbData)">
+      <mat-icon>{{ isFavorite(verbData) ? 'star' : 'star_border' }}</mat-icon>
+    </button>
+  </div>
+
+  <div class="verb-details">
+    <p><strong>Groupe:</strong> {{ verbData.groupe }}</p>
+    <p><strong>Auxiliaire:</strong> {{ verbData.auxiliaire }}</p>
+    <p><strong>Type:</strong> {{ verbData.type }}</p>
+    <p><strong>Règle:</strong> {{ verbData.regle }}</p>
+  </div>
+
+  <mat-accordion>
+    <ng-container *ngFor="let mode of modes">
+      <mat-expansion-panel *ngIf="mode.data && mode.data.length">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ mode.name }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div *ngFor="let tense of mode.data">
+          <p><strong>{{ tense.titre }}:</strong></p>
+          <ul class="tense-list">
+            <li *ngIf="tense.je">{{ tense.je }}</li>
+            <li *ngIf="tense.tu">{{ tense.tu }}</li>
+            <li *ngIf="tense.il"> {{ tense.il }}</li>
+            <li *ngIf="tense.nous">{{ tense.nous }}</li>
+            <li *ngIf="tense.vous">{{ tense.vous }}</li>
+            <li *ngIf="tense.ils">{{ tense.ils }}</li>
+          </ul>
+        </div>
+      </mat-expansion-panel>
+    </ng-container>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Infinitif et Participe
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="infinitive-participle">
+        <p><strong>Infinitif Présent:</strong> {{ verbData.nominale?.infinitif?.present || 'Non disponible' }}</p>
+        <p><strong>Infinitif Passé:</strong> {{ verbData.nominale?.infinitif?.passe || 'Non disponible' }}</p>
+        <p><strong>Participe Présent:</strong> {{ verbData.nominale?.participe?.present || 'Non disponible' }}</p>
+        <p><strong>Participe Passé:</strong> {{ verbData.nominale?.participe?.passe || 'Non disponible' }}</p>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
 
 
-<div>
-   <h2>Conjugaison pour le verbe: {{ verb }}</h2>
-   <button (click)="getConjugation()">Recharger</button>
-   
-   @if(verbData){
-      <div>
-         <h3>Description complète</h3>
-         <p>{{ verbData.fullDescription }} </p>
-     
-         <h3>Conjugaisons au Présent de l'indicatif</h3>
-         <ul>
-           <li>Je: {{ verbData.indicatif.present.indicatifPresentI }}</li>
-           <li>Tu: {{ verbData.indicatif.present.indicatifPresentYou }}</li>
-           <li>Il/Elle/On: {{ verbData.indicatif.present.indicatifPresentHeSheIt }}</li>
-           <li>Nous: {{ verbData.indicatif.present.indicatifPresentWe }}</li>
-           <li>Vous: {{ verbData.indicatif.present.indicatifPresentYouAll }}</li>
-           <li>Ils/Elles: {{ verbData.indicatif.present.indicatifPresentThey }}</li>
-         </ul>
-       </div>
-       
-
-   }
-
-   
- </div>
+<div *ngIf="favorites && favorites.size > 0" class="favorites-list">
+  <h3>Favoris</h3>
+  <ul>
+    <li *ngFor="let fav of favorites">{{ fav }}</li>
+  </ul>
+</div>

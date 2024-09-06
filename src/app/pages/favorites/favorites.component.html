@@ -1,0 +1,13 @@
+<div class="favorites-container">
+  <h3 class="favorites-title">Verbes Favoris</h3>
+  <div *ngFor="let verbe of listVerbFavorites" class="verb-item">
+    <div class="verb-details">
+    
+      <span class="verb-name">{{ verbe.verb.nom ? verbe.verb.nom : 'Nom inconnu' }}</span>
+
+    </div>
+    <button mat-fab color="warn" aria-label="Supprimer" (click)="deleteVerbFavorites(verbe.uid)">
+      <mat-icon>delete</mat-icon> Supprimer
+    </button>
+  </div>
+</div>

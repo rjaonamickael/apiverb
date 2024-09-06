@@ -1,21 +1,91 @@
-#container{
-   display:flex;
-   align-items: center;
-   justify-content: center;
-   width: 100%;
-   height: 100%;
+#container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background-color: #f0f2f5;
 }
 
-form{
-   background-color: aliceblue;
-   padding: 20px;
-   border-radius: 10px;
-   width: 400px;
-   flex-direction: column;
-   width: 400px;
-   display: flex;
+form {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
 }
 
-mat-error{
-   text-align: center;
+form:hover {
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+}
+
+h3 {
+  margin: 0 0 20px;
+  font-size: 1.5rem;
+  color: #6C63FF;
+  text-align: center;
+}
+
+mat-form-field {
+  width: 100%;
+  
+}
+
+mat-label {
+  color: #6C63FF;
+  font-weight: 500;
+}
+
+input[matInput] {
+  //border: 1px solid #ddd;
+  width: 94%;
+  padding: 10px;
+  border-radius: 5px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[matInput]:focus {
+  border-color: #6C63FF;
+  box-shadow: 0 0 8px rgba(108, 99, 255, 0.2);
+}
+
+button[mat-flat-button] {
+  background-color: #6C63FF;
+  color: white;
+  padding: 12px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+button[mat-flat-button]:hover {
+  background-color: #4CAF50;
+  transform: scale(1.05);
+}
+
+button.register-button {
+  margin-top: 10px;
+  color: #6C63FF;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+button.register-button:hover {
+  color: #4CAF50;
+}
+
+mat-error {
+  color: #d32f2f;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 10px;
+  display: block;
 }
