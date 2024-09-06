@@ -1,3 +1,4 @@
+
 import { verbFunctions } from './../../functions/verb.functions';
 import { ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Verbe } from '../../models/verbe.model';
@@ -9,14 +10,18 @@ import { MatIconModule } from '@angular/material/icon';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { VerbsService } from '../../services/verb/verbs.service';
 
+
 @Component({
   selector: 'app-conjugation',
   standalone: true,
+
   imports: [CommonModule,MatExpansionModule,FormsModule,MatListModule,MatIconModule],
+
   templateUrl: './conjugation.component.html',
   styleUrl: './conjugation.component.scss'
 })
 export class ConjugationComponent {
+
 
   private verbFunctions = new verbFunctions();
   @Input() verbeConjuge!: Verbe;
@@ -56,3 +61,4 @@ export class ConjugationComponent {
   }
 
 }
+

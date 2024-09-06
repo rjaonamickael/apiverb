@@ -1,6 +1,8 @@
+
 // src/app/pages/home/home.component.ts
 import { Component, inject, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-home',
@@ -8,6 +10,7 @@ import { Router } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
+
 export class HomeComponent implements OnDestroy {
   private router = inject(Router);
 
@@ -29,5 +32,5 @@ export class HomeComponent implements OnDestroy {
     this.router.navigate(['/login']);
   }
 
-  ngOnDestroy(): void { }
+
 }

@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+
 import { Observable } from 'rxjs';
+
 import { environment } from '../../../environment';
 
 @Injectable({
@@ -8,6 +10,7 @@ import { environment } from '../../../environment';
 })
 export class VerbsService {
   private http = inject(HttpClient);
+
   private url = environment.BASE_URL + 'verbs/';
   private token: string | null = null;
 
@@ -24,6 +27,7 @@ export class VerbsService {
   getVerbService(verb: string): Observable<any> {
     const headers = this.getHeaders();
     const body = { verb };
+
     return this.http.post(this.url, body, { headers });
   }
 
