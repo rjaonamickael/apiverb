@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+
 import { Observable } from 'rxjs';
+
 import { environment } from '../../../environment';
 import { AuthHeader } from '../../security/headers/auth.headers';
 
@@ -9,6 +11,7 @@ import { AuthHeader } from '../../security/headers/auth.headers';
 })
 export class VerbsService {
   private http = inject(HttpClient);
+
   private url = environment.BASE_URL + 'verbs/';
   private headers = new AuthHeader();
   
@@ -17,6 +20,7 @@ export class VerbsService {
   getVerbService(verb: string): Observable<any> {
     const headers = this.headers.getHeaders();
     const body = { verb };
+
     return this.http.post(this.url, body, { headers });
   }
 

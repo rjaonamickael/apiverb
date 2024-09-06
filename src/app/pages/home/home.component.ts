@@ -1,7 +1,9 @@
+
 // src/app/pages/home/home.component.ts
 import { Component, inject, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { HeaderLogedComponent } from "../../components/header-loged/header-loged.component";
+
 
 @Component({
   selector: 'app-home',
@@ -10,6 +12,7 @@ import { HeaderLogedComponent } from "../../components/header-loged/header-loged
   styleUrls: ['./home.component.scss'],
   imports: [HeaderLogedComponent]
 })
+
 export class HomeComponent implements OnDestroy {
   private router = inject(Router);
 
@@ -31,5 +34,5 @@ export class HomeComponent implements OnDestroy {
     this.router.navigate(['/login']);
   }
 
-  ngOnDestroy(): void { }
+
 }
