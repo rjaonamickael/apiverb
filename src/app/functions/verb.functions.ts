@@ -122,7 +122,7 @@ async getRandom(quantity: number): Promise<any[]> {
   let verbe = new Verbe();
 
   // Mapping des propriétés principales
-  verbe.nom         = majusc(data.verb.word);                             // Titre du verbe
+  verbe.nom         = majusc(data.verb.infinitive.present);               // Titre du verbe
   verbe.groupe      = groupe(data.verb.wordVerbGroup);                    // 1er ou 2nde ou 3ème groupe
   verbe.auxiliaire  = auxiliaire(data.verb.wordConjugateWithWhichVerb);   // Auxiliaire avoir ou être
   verbe.type        = Type(data.verb.wordVerbType);                       // Transitif ou instransitif ou ambi
