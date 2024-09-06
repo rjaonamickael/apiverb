@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './game-conjugation.component.html',
   styleUrl: './game-conjugation.component.scss'
 })
+
 export class GameConjugationComponent {
   private functions = new verbFunctions();
   randomVerbs: string[] = [];
@@ -25,7 +26,7 @@ export class GameConjugationComponent {
     this.functions.getRandom(this.verbQty)
       .then((response: any) => {
         console.log('API Response:', response);
-        this.randomVerbs = response.verbs || [];
+        this.randomVerbs = response || [];
         if (this.randomVerbs.length > 0) {
           this.generateQuiz();
         } else {
