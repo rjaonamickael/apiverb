@@ -3,6 +3,8 @@
 import { Component, inject, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { HeaderLogedComponent } from "../../components/header-loged/header-loged.component";
+import { NavigateFunctions } from '../../functions/navigateFunctions';
+import { UserFunctions } from '../../functions/user.functions';
 
 
 @Component({
@@ -14,24 +16,23 @@ import { HeaderLogedComponent } from "../../components/header-loged/header-loged
 })
 
 export class HomeComponent  {
-  private router = inject(Router);
+  navigateFunctions = new NavigateFunctions();
+  userFunctions = new UserFunctions();
 
   navigateToConjugation() {
-    this.router.navigate(['conjugation']);
+    this.navigateFunctions.toConjugation();
   }
 
   navigateToAllFavorites() {
-    this.router.navigate(['favorites']);
+    this.navigateFunctions.toFavorites();
   }
 
   navigateToGamesHome() {
-    this.router.navigate(['games']);
+    this.navigateFunctions.toGamesHome();
   }
 
   logout(): void {
-    localStorage.removeItem('x-access-token');
-    localStorage.removeItem('user_name');
-    this.router.navigate(['/login']);
+    this.userFunctions.logout();
   }
 
 

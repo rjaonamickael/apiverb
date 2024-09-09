@@ -25,8 +25,12 @@
   
   .logo h1 {
     margin: 0;
+    padding: 10px;
     font-size: 1.8rem;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    transition: background-color 0.2s ease-in-out;
+    cursor: pointer;
   }
   
   .options ul {
@@ -52,7 +56,7 @@
   }
   
   
-  .options a:hover {
+  .options a:hover, .logo h1:hover {
     background-color: rgba(255, 255, 255, 0.1);
     transform: none;
   }
@@ -106,5 +110,15 @@
     background-color: #4CAF50;
     transform: scale(1.05);
     cursor: pointer;
+  }
+
+  .menu {
+    background-color: none;
+    opacity: 1; /* Opacité initiale à 100% */
+    transition: opacity 0.3s ease; /* Transition douce pour l'effet */
+  }
+  
+  .menu:hover {
+    opacity: 0.5; /* Opacité à 50% lorsque la souris survole */
   }
   

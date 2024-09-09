@@ -1,3 +1,4 @@
+import { NavigateFunctions } from './../../functions/navigateFunctions';
 import { Credentials, UsersService } from '../../services/user/users.service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
@@ -23,10 +24,9 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, OnDestroy {
-
+  navigateFunctions = new NavigateFunctions()
 
   private formBuilder = inject(FormBuilder);
-  private router = inject(Router);
   private usersService = inject(UsersService);
   private userSubscription: Subscription | null = null;
 
@@ -56,11 +56,11 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   navigateHome() {
-    this.router.navigate(['home']);
+    this.navigateFunctions.toHome();
   }
 
   navigateRegister() {
-    this.router.navigate(['register']);
+    this.navigateFunctions.toRegister();
   }
 
 
