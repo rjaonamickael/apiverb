@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { UsersService } from '../../services/user/users.service';
 import { Router } from '@angular/router'; 
+import { UserFunctions } from '../../functions/user.functions';
 
 @Component({
   selector: 'app-header-loged',
@@ -12,19 +13,12 @@ import { Router } from '@angular/router';
 export class HeaderLogedComponent {
   private usersService = inject(UsersService);
   private router = inject(Router);
+  userFunctions = new UserFunctions();
 
   constructor(){}
 
-  logout(): void {
-
-    localStorage.removeItem('x-access-token');
-    localStorage.removeItem('user_name');
-
-
-    this.usersService.user.set(null);
-
-    this.router.navigate(['/login']);
+  logout() {
+    this.userFunctions.logout();
   }
-
 
 }
