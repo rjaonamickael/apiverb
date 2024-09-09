@@ -19,7 +19,7 @@ export const routes: Routes = [
       path: 'login', 
       component:LoginComponent},
    {
-      path: 'home', 
+      path: 'register', 
       component:HomeComponent,
       canActivate:[isLoggedGuard]
    },

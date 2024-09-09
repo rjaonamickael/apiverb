@@ -2,6 +2,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from '../../../services/user/users.service';
+import { NavigateFunctions } from '../../../functions/navigateFunctions';
+import { UserFunctions } from '../../../functions/user.functions';
 
 @Component({
   selector: 'app-game-home',
@@ -10,21 +12,21 @@ import { UsersService } from '../../../services/user/users.service';
   styleUrls: ['./GameHome.component.scss']
 })
 export class GamesHomeComponent   {
-  constructor(private router: Router, private usersService: UsersService) {
-    console.log('GamesHome start');
+  navigateFunctions = new NavigateFunctions();
+  userFunctions = new UserFunctions();
+
+  constructor() {
+
   }
+
   navigateToquiz() {
-    this.router.navigate(['games/quiz']);
+    this.navigateFunctions.toGamesQuiz();
   }
   navigateToGameConjugation() {
-    this.router.navigate(['games/conjugation']);
+    this.navigateFunctions.toGamesConjugation();
   }
 
   logout(): void {
-
-    localStorage.removeItem('x-access-token');
-    localStorage.removeItem('user_name');
-    this.usersService.user.set(null);
-    this.router.navigate(['/login']);
+    this.userFunctions.logout();
   }
 }

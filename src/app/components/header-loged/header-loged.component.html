@@ -1,13 +1,19 @@
 <header>
   <div class="top-bar">
-    <div class="logo">
-      <h1>Bienvenue sur l'Application des Verbes Français</h1>
-    </div>
+    <a (click)="navigateFunctions.toHome()">
+      <div class="logo">
+        <h1>Bienvenue sur l'Application des Verbes Français</h1>
+      </div>
+    </a>
     <nav class="options">
       <ul>
-        <li><a routerLink="/games-home">Jeu de Conjugaison</a></li>
-        <li><a routerLink="/consultation-conjugaison">Consultation de Conjugaison</a></li>
-        <li><a routerLink="/quiz-verbes">Quiz de Verbes</a></li>
+        <li><a (click)="navigateFunctions.toConjugation()">Conjuger ici</a></li>
+        <li><a (click)="navigateFunctions.toFavorites()">Favoris</a></li>
+        <li [matMenuTriggerFor]="menuGames"><a routerLink="/quiz-verbes">Jeux</a></li>
+        <mat-menu class="menu" #menuGames="matMenu">
+          <button class="menu" mat-menu-item (click)="navigateFunctions.toGamesConjugation()">Jeux de conjugaison</button>
+          <button class="menu" mat-menu-item (click)="navigateFunctions.toGamesQuiz()">Quiz verbe</button>
+        </mat-menu>
         <li><a routerLink="/application-educative">Application Éducative</a></li>
         <li><a (click)="userFunctions.logout()"><i class="fas fa-sign-out-alt logout-icon"></i></a></li> <!-- Utiliser l'icône logout -->
       </ul>
