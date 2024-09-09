@@ -13,7 +13,7 @@ import { HeaderLogedComponent } from "../../components/header-loged/header-loged
   imports: [HeaderLogedComponent]
 })
 
-export class HomeComponent implements OnDestroy {
+export class HomeComponent  {
   private router = inject(Router);
 
   navigateToConjugation() {
